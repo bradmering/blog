@@ -21,13 +21,30 @@ itinerary:
     zoom: 11
     pitch: 50
     description: "The strip sits at the head of the Hulahula drainage in the Philip Smith Mountains. We don't have a strong immediate plan. We hope to explore the Okpilak Glacier and headwaters of the Okpilak river, winding our way up and over the divide, and then back down again to the headwaters of the Hulahula."
+    routePoints:
+      - [-144.610803, 69.075596]
+      - [-144.617976, 69.05346]
+      - [-144.520074, 69.058181]
+      - [-144.445027, 69.06889]
+      - [-144.340587, 69.065154]
+      - [-144.239443, 69.075625]
+      - [-144.154699, 69.089843]
+      - [-144.114371, 69.097666]
+      - [-144.169016, 69.130782]
+      - [-144.259204, 69.132411]
+      - [-144.265312, 69.128829]
+      - [-144.266439, 69.13112]
   - id: upper-hulahula
     name: Creeking the upper river
     dates: "July 5th - July 6th"
     coordinates: [-144.65, 69.35]
     zoom: 12
     pitch: 40
-    description: "** July 5nd - July 6th — The headwaters of these rivers tend to be narrow, braided, and shallow.  Our rafts sit high in the water, but we still expect several small portages these days. Our primary work will be choosing the right channel to keep us in the boats, and remembering to paddle when we get caught up looking around. "
+    description: "The headwaters of these rivers tend to be narrow, braided, and shallow. Our rafts sit high in the water, but we still expect several small portages these days. Our primary work will be choosing the right channel to keep us in the boats, and remembering to paddle when we get caught up looking around."
+    routePoints:
+      - [-144.63, 69.42]
+      - [-144.58, 69.49]
+      - [-144.54, 69.55]
   - id: hulahula-canyon
     name: Hulahula Canyon
     dates: "July 6th - 7th"
@@ -35,20 +52,28 @@ itinerary:
     zoom: 11
     pitch: 55
     description: "The Hulahula cuts through the range in a long, spectacular canyon with sections of Class III water that we'll need to scout. Above the canyon the river is shallow, but fast, dropping out of the high mountains. Below, it opens into braided channels across the foothills and eventually the coastal plain — fast water and good floating."
+    routePoints:
+      - [-144.45, 69.67]
+      - [-144.35, 69.74]
+      - [-144.20, 69.82]
+      - [-144.05, 69.90]
   - id: coastal-plain
     name: Coastal Plain to Kaktovik
     dates: "July 7th – 8th"
     coordinates: [-143.90, 70.00]
     zoom: 10
     pitch: 20
-    description: "The last section flattens out onto the long coastal plain. Hard paddling might be required, as the headwinds come off the sea, and the water slows. We'll navigate the mudflats, then line back up the Okpilak river and float into the Arey Lagon, separated by barrier islands from the Beaufort Sea. We'll carefully cross the sea ice that covers the Arey Lagoon, then west along the barrier islands to Barter Island, to the village of Kaktovik. We're hoping that the sea ice keeps the polar bears out at sea.."
+    description: "The last section flattens out onto the long coastal plain. Hard paddling might be required, as the headwinds come off the sea, and the water slows. We'll navigate the mudflats, then cross the sea ice of the Arey Lagoon — separated from the Beaufort Sea by barrier islands — and make our way west along the coast to Barter Island and Kaktovik."
+    routePoints:
+      - [-143.82, 70.05]
+      - [-143.72, 70.10]
   - id: kaktovik
     name: Kaktovik
     dates: "July 8"
     coordinates: [-143.62, 70.13]
     zoom: 13
     pitch: 0
-    description: "The seat flight leaves at 1pm, and the next one leaves the next week.  Missing this flight is not optional! "
+    description: "The seat flight leaves at 1pm, and the next one leaves the next week. Missing this flight is not optional!"
 ---
 
 ## Live Tracking
@@ -121,8 +146,7 @@ We're using 1:63,360-scale USGS quads — the standard for Alaska backcountry. T
 - ~800g/day per person
 - Freeze-dried dinners × 10
 - Bars, nut butter, hard cheese, salami for trail
-- Stove (MSR PocketRocket) + fuel × 2 canisters
-- Titanium pot
+- Stove (JetBoil) + fuel × 3 canisters
 
 **Safety & Medical**
 - Bear spray, Bear Bangers

@@ -23,6 +23,7 @@ export interface ItineraryStop {
   zoom?: number
   pitch?: number
   description?: string
+  routePoints?: [number, number][]  // intermediate [lng, lat] points between this stop and the next
 }
 
 export interface Post {

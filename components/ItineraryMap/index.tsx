@@ -1,27 +1,43 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useMemo } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import type { ItineraryStop } from '@/lib/posts'
+
+function easeInOut(t: number): number {
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+}
 
 export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapRef = useRef<mapboxgl.Map | null>(null)
   const stopRefs = useRef<(HTMLDivElement | null)[]>([])
-  const markerEls = useRef<HTMLDivElement[]>([])
+  const animFrameRef = useRef<number | null>(null)
+  const visibleEndRef = useRef(0)
   const [activeIdx, setActiveIdx] = useState(0)
   const [mapLoaded, setMapLoaded] = useState(false)
+
+  // Full polyline + index at which each stop's segment ends
+  const { fullRoute, segEndIndices } = useMemo(() => {
+    const fullRoute: [number, number][] = []
+    const segEndIndices: number[] = []
+    stops.forEach((stop) => {
+      fullRoute.push(stop.coordinates as [number, number])
+      if (stop.routePoints) fullRoute.push(...(stop.routePoints as [number, number][]))
+      segEndIndices.push(fullRoute.length - 1)
+    })
+    return { fullRoute, segEndIndices }
+  }, [stops])
 
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return
 
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!
 
-    const coords = stops.map((s) => s.coordinates as [number, number])
-    const bounds = coords.reduce(
+    const bounds = fullRoute.reduce(
       (b, c) => b.extend(c),
-      new mapboxgl.LngLatBounds(coords[0], coords[0])
+      new mapboxgl.LngLatBounds(fullRoute[0], fullRoute[0])
     )
 
     const map = new mapboxgl.Map({
@@ -34,12 +50,19 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
     })
 
     map.on('load', () => {
+      const initialEnd = segEndIndices[0]
+      visibleEndRef.current = initialEnd
+
+      // ── Route line ──────────────────────────────────────────
       map.addSource('route', {
         type: 'geojson',
         data: {
           type: 'Feature',
           properties: {},
-          geometry: { type: 'LineString', coordinates: coords },
+          geometry: {
+            type: 'LineString',
+            coordinates: fullRoute.slice(0, Math.max(initialEnd + 1, 2)),
+          },
         },
       })
       map.addLayer({
@@ -57,14 +80,48 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
         paint: { 'line-color': '#ef4444', 'line-width': 2, 'line-opacity': 0.85 },
       })
 
-      markerEls.current = stops.map((stop, i) => {
-        const el = document.createElement('div')
-        el.style.cssText =
-          'width:10px;height:10px;border-radius:50%;background:white;border:2px solid #ef4444;box-shadow:0 1px 4px rgba(0,0,0,0.35);transition:transform 0.25s,background 0.25s;'
-        new mapboxgl.Marker({ element: el, anchor: 'center' })
-          .setLngLat(stop.coordinates as [number, number])
-          .addTo(map)
-        return el
+      // ── Stop markers as a GL layer (stays fixed during camera moves) ──
+      map.addSource('stops', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: stops.map((stop, i) => ({
+            type: 'Feature',
+            properties: { idx: i, active: i === 0 },
+            geometry: { type: 'Point', coordinates: stop.coordinates },
+          })),
+        },
+      })
+      map.addLayer({
+        id: 'stop-halo',
+        type: 'circle',
+        source: 'stops',
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#ef4444',
+          'circle-opacity': 0.2,
+        },
+      })
+      map.addLayer({
+        id: 'stop-dot',
+        type: 'circle',
+        source: 'stops',
+        paint: {
+          'circle-radius': ['case', ['get', 'active'], 6, 4],
+          'circle-color': ['case', ['get', 'active'], '#ef4444', '#ffffff'],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#ef4444',
+        },
+      })
+
+      // Fly to first stop
+      map.flyTo({
+        center: stops[0].coordinates as [number, number],
+        zoom: stops[0].zoom ?? 10,
+        pitch: stops[0].pitch ?? 30,
+        bearing: 0,
+        duration: 1200,
+        essential: true,
       })
 
       setMapLoaded(true)
@@ -72,41 +129,103 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
 
     mapRef.current = map
     return () => {
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current)
       map.remove()
       mapRef.current = null
     }
-  }, [stops])
+  }, [stops, fullRoute, segEndIndices])
 
-  // Fly to active stop
+  // Animate route + camera tracking the route tip
   useEffect(() => {
     if (!mapLoaded || !mapRef.current) return
-    const stop = stops[activeIdx]
-    mapRef.current.flyTo({
-      center: stop.coordinates as [number, number],
-      zoom: stop.zoom ?? 10,
-      pitch: stop.pitch ?? 30,
-      bearing: 0,
-      duration: 2400,
-      essential: true,
-    })
-  }, [mapLoaded, activeIdx, stops])
+    const map = mapRef.current
+    const routeSource = map.getSource('route') as mapboxgl.GeoJSONSource
+    const stopsSource = map.getSource('stops') as mapboxgl.GeoJSONSource
+    if (!routeSource || !stopsSource) return
 
-  // Update marker styles on active change
-  useEffect(() => {
-    markerEls.current.forEach((el, i) => {
-      if (i === activeIdx) {
-        el.style.background = '#ef4444'
-        el.style.transform = 'scale(1.6)'
-        el.style.zIndex = '10'
+    // Update active marker
+    stopsSource.setData({
+      type: 'FeatureCollection',
+      features: stops.map((stop, i) => ({
+        type: 'Feature',
+        properties: { idx: i, active: i === activeIdx },
+        geometry: { type: 'Point', coordinates: stop.coordinates },
+      })),
+    })
+
+    const fromIdx = visibleEndRef.current
+    const toIdx = segEndIndices[activeIdx]
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current)
+
+    // No route travel needed — just fly to this stop
+    if (fromIdx === toIdx) {
+      const stop = stops[activeIdx]
+      map.flyTo({
+        center: stop.coordinates as [number, number],
+        zoom: stop.zoom ?? 10,
+        pitch: stop.pitch ?? 30,
+        bearing: 0,
+        duration: 1000,
+        essential: true,
+      })
+      return
+    }
+
+    // Determine zoom/pitch for camera: lerp from origin stop to destination stop
+    const destStop = stops[activeIdx]
+    const originStop = toIdx > fromIdx
+      ? stops[Math.max(0, activeIdx - 1)]
+      : stops[Math.min(stops.length - 1, activeIdx + 1)]
+    const fromZoom = originStop.zoom ?? 10
+    const toZoom = destStop.zoom ?? 10
+    const fromPitch = originStop.pitch ?? 30
+    const toPitch = destStop.pitch ?? 30
+
+    const startTime = performance.now()
+    const duration = 2000
+
+    const step = (now: number) => {
+      const t = Math.min((now - startTime) / duration, 1)
+      const eased = easeInOut(t)
+
+      // Fractional position along the route — interpolate between integer indices
+      const frac = fromIdx + (toIdx - fromIdx) * eased
+      const lo = Math.floor(frac)
+      const hi = Math.min(lo + 1, fullRoute.length - 1)
+      const alpha = frac - lo
+
+      const [lng0, lat0] = fullRoute[lo]
+      const [lng1, lat1] = fullRoute[hi]
+      const tip: [number, number] = [lng0 + (lng1 - lng0) * alpha, lat0 + (lat1 - lat0) * alpha]
+
+      // Route: all full points up to lo, plus the smooth interpolated tip
+      const coords = [...fullRoute.slice(0, lo + 1), tip]
+      routeSource.setData({
+        type: 'Feature',
+        properties: {},
+        geometry: { type: 'LineString', coordinates: coords.length >= 2 ? coords : [...coords, tip] },
+      })
+
+      // Camera glides along with the tip
+      map.jumpTo({
+        center: tip,
+        zoom: fromZoom + (toZoom - fromZoom) * eased,
+        pitch: fromPitch + (toPitch - fromPitch) * eased,
+        bearing: 0,
+      })
+
+      if (t < 1) {
+        animFrameRef.current = requestAnimationFrame(step)
       } else {
-        el.style.background = 'white'
-        el.style.transform = 'scale(1)'
-        el.style.zIndex = '1'
+        visibleEndRef.current = toIdx
+        animFrameRef.current = null
       }
-    })
-  }, [activeIdx])
+    }
 
-  // Intersection observer to drive active stop
+    animFrameRef.current = requestAnimationFrame(step)
+  }, [mapLoaded, activeIdx, stops, fullRoute, segEndIndices])
+
+  // Intersection observer
   useEffect(() => {
     const observers: IntersectionObserver[] = []
     stopRefs.current.forEach((ref, i) => {
@@ -123,7 +242,7 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
 
   return (
     <section className="relative flex flex-col lg:flex-row border-t border-b border-stone-100 bg-white">
-      {/* ── Timeline (left on desktop, bottom on mobile) ── */}
+      {/* ── Timeline ── */}
       <div className="order-2 lg:order-1 flex-1 py-12 px-8 sm:px-12 lg:px-14 xl:px-20">
         <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 mb-10">
           Itinerary
@@ -136,7 +255,6 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
               ref={(el) => { stopRefs.current[i] = el }}
               className="flex gap-5"
             >
-              {/* Dot + connector */}
               <div className="flex flex-col items-center flex-shrink-0 w-3">
                 <div
                   className={`w-3 h-3 rounded-full border-2 flex-shrink-0 transition-all duration-300 ${
@@ -150,7 +268,6 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
                 )}
               </div>
 
-              {/* Content */}
               <div
                 className={`flex-1 pb-12 transition-opacity duration-400 ${
                   i === activeIdx ? 'opacity-100' : 'opacity-35'
@@ -175,11 +292,10 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
         </div>
       </div>
 
-      {/* ── Map (right on desktop, top on mobile) ── */}
+      {/* ── Map ── */}
       <div className="order-1 lg:order-2 lg:w-[48%] h-[40vh] lg:h-auto">
         <div className="sticky top-14 h-[40vh] lg:h-[calc(100vh-3.5rem)]">
           <div ref={mapContainer} className="w-full h-full" />
-          {/* Stop counter */}
           <div className="absolute bottom-5 left-5 bg-black/50 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full pointer-events-none">
             {activeIdx + 1} / {stops.length}
           </div>

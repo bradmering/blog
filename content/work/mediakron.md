@@ -15,8 +15,7 @@ A set of images could be placed on a map, connected to a timeline, and inserted 
 
 Students and professors found endless clever ways to push the toolchain - scans of 16th century cookbook with annotations connecting the recipes with the history of medicine and gender, a walking tour of Joyce's Ulysses with contemporary and historic Dublin maps, a linked map and timeline showing the rise and fall of the key buildings in Rome.
 
-
-Originally built in Flash, then Drupal, and finally as a Syfony/Backbonejs application, I hope to resurrect the core ideas of Mediakron in a new platform that supports cutting edge teaching and research.
+Originally built in Flash, then Drupal 5, and finally as a Syfony/Backbonejs application, I hope to resurrect the core ideas of Mediakron in a new platform that supports cutting edge teaching and research.
 
 ## Design Challenges
 
