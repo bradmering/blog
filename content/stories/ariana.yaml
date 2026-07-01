@@ -1,0 +1,19 @@
+title: Ariana
+topoSlug: ariana
+chapters:
+  - id: title
+    type: title
+    heading: "Ariana (5.12a)"
+    subheading: "Seven days through the Arctic National Wildlife Refuge"
+    image: "/images/canning-river/IMG_0641.webp"
+    text: |
+      Ariana is as good of a rock climb as I've been on. Climbing the plumb line, straightening out the broken 
+  - id: topo-overview
+    type: topo
+    topoSlug: ariana
+    bounds:
+      - - 0
+        - 0
+      - - 1200
+        - 1083
+    bgOpacity: 1

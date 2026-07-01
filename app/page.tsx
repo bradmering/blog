@@ -1,65 +1,125 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import { getAllPosts, getPost, formatDate } from '@/lib/posts'
+import TagBadge from '@/components/TagBadge'
+import PostTeaser from '@/components/PostTeaser'
+import CoordinatesDisplay from '@/components/CoordinatesDisplay'
+import ItineraryMapLoader from '@/components/ItineraryMap/Loader'
 
-export default function Home() {
+export default async function Home() {
+  const allPosts = getAllPosts()
+  const [latestMeta, ...olderPosts] = allPosts
+
+  if (!latestMeta) {
+    return (
+      <div className="max-w-5xl mx-auto px-6 py-24 text-center text-stone-400">
+        No posts yet.
+      </div>
+    )
+  }
+
+  const latest = await getPost(latestMeta.slug)
+  if (!latest) return null
+
+  const teasers = olderPosts.slice(0, 3)
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div>
+      {/* Hero image */}
+      <div className="relative w-full h-[70vh] min-h-[480px] bg-stone-100">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src={latest.image}
+          alt={latest.imageAlt}
+          fill
           priority
+          className="object-cover"
+          sizes="100vw"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
+        <div className="absolute bottom-0 left-0 right-0 max-w-5xl mx-auto px-6 pb-10">
+          <div className="flex items-center gap-2 mb-3 flex-wrap">
+            {latest.tags.map((tag) => (
+              <TagBadge key={tag} tag={tag} />
+            ))}
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight max-w-3xl">
+            {latest.title}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* Meta + Excerpt */}
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-2xl mx-auto pt-12 pb-10">
+          <div className="flex items-center gap-4 mb-8 pb-8 border-b border-stone-100 flex-wrap">
+            <time className="text-sm text-stone-400 font-medium">
+              {formatDate(latest.date)}
+            </time>
+            {latest.coordinates && (
+              <>
+                <span className="text-stone-200" aria-hidden>·</span>
+                <CoordinatesDisplay coords={latest.coordinates} />
+              </>
+            )}
+          </div>
+
+          <div className="text-xl text-stone-600 leading-relaxed font-medium space-y-4">
+            {latest.excerpt.split(/\n\n+/).map((para, i) => (
+              <p key={i}>{para.trim()}</p>
+            ))}
+          </div>
         </div>
-      </main>
+      </div>
+
+      {/* Itinerary Map — full width, between excerpt and body */}
+      {latest.itinerary && latest.itinerary.length > 0 && (
+        <ItineraryMapLoader stops={latest.itinerary} />
+      )}
+
+      {/* Body */}
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-2xl mx-auto pt-12 pb-12">
+          <div
+            className="prose prose-stone max-w-none"
+            dangerouslySetInnerHTML={{ __html: latest.content ?? '' }}
+          />
+        </div>
+      </div>
+
+      {/* Older posts — up to 3 teasers + link to all */}
+      {teasers.length > 0 && (
+        <div className="border-t border-stone-100 bg-stone-50/50">
+          <div className="max-w-5xl mx-auto px-6 py-12">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-xs font-semibold text-stone-400 tracking-widest uppercase">
+                Earlier
+              </h2>
+              <Link
+                href="/blog"
+                className="text-sm text-stone-500 hover:text-stone-900 transition-colors"
+              >
+                All posts →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {teasers.map((post) => (
+                <PostTeaser key={post.slug} post={post} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* No older posts — still show link to archive if there could be more later */}
+      {teasers.length === 0 && (
+        <div className="border-t border-stone-100">
+          <div className="max-w-5xl mx-auto px-6 py-8 text-right">
+            <Link href="/blog" className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
+              All posts →
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  )
 }

@@ -1,0 +1,519 @@
+{
+  "canning-river": [
+    {
+      "src": "/images/canning-river/IMG_0401.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-26",
+      "lat": 68.726158,
+      "lng": -146.149094,
+      "alt_m": 952.5
+    },
+    {
+      "src": "/images/canning-river/IMG_0412.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-26",
+      "lat": 68.729217,
+      "lng": -146.136336,
+      "alt_m": 860.8
+    },
+    {
+      "src": "/images/canning-river/IMG_0444.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-26",
+      "lat": 68.717719,
+      "lng": -146.184769,
+      "alt_m": 912.9
+    },
+    {
+      "src": "/images/canning-river/IMG_0452.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-26",
+      "lat": 68.715156,
+      "lng": -146.200942,
+      "alt_m": 1360.0
+    },
+    {
+      "src": "/images/canning-river/IMG_0468.webp",
+      "width": 2400,
+      "height": 1158,
+      "date": "2021-06-26",
+      "lat": 68.715156,
+      "lng": -146.201019,
+      "alt_m": 1359.1
+    },
+    {
+      "src": "/images/canning-river/IMG_0473.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-26",
+      "lat": 68.724328,
+      "lng": -146.183381,
+      "alt_m": 884.2
+    },
+    {
+      "src": "/images/canning-river/LIZ60256.webp",
+      "width": 1500,
+      "height": 1125,
+      "date": "2021-06-26"
+    },
+    {
+      "src": "/images/canning-river/IMG_0527.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-27",
+      "lat": 68.749633,
+      "lng": -146.126969,
+      "alt_m": 828.7
+    },
+    {
+      "src": "/images/canning-river/IMG_0570.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-27",
+      "lat": 68.794175,
+      "lng": -146.073319,
+      "alt_m": 770.6
+    },
+    {
+      "src": "/images/canning-river/IMG_0582.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-27",
+      "lat": 68.817558,
+      "lng": -146.064103,
+      "alt_m": 739.9
+    },
+    {
+      "src": "/images/canning-river/IMG_0610.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-27",
+      "lat": 68.817519,
+      "lng": -146.063933,
+      "alt_m": 767.7
+    },
+    {
+      "src": "/images/canning-river/IMG_0641.webp",
+      "width": 4000,
+      "height": 885,
+      "date": "2021-06-27",
+      "lat": 68.824608,
+      "lng": -146.123092,
+      "alt_m": 1332.1
+    },
+    {
+      "src": "/images/canning-river/LIZ70431.webp",
+      "width": 1500,
+      "height": 1125,
+      "date": "2021-06-27"
+    },
+    {
+      "src": "/images/canning-river/IMG_0652.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-28",
+      "lat": 68.817978,
+      "lng": -146.062486,
+      "alt_m": 659.5
+    },
+    {
+      "src": "/images/canning-river/IMG_0695.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-28",
+      "lat": 68.838919,
+      "lng": -146.045975,
+      "alt_m": 726.9
+    },
+    {
+      "src": "/images/canning-river/LIZ80593.webp",
+      "width": 1125,
+      "height": 1500,
+      "date": "2021-06-28"
+    },
+    {
+      "src": "/images/canning-river/LIZ80600.webp",
+      "width": 1500,
+      "height": 1125,
+      "date": "2021-06-28"
+    },
+    {
+      "src": "/images/canning-river/LIZ80606.webp",
+      "width": 1500,
+      "height": 1125,
+      "date": "2021-06-28"
+    },
+    {
+      "src": "/images/canning-river/LIZ91056.webp",
+      "width": 1500,
+      "height": 1125,
+      "date": "2021-06-29"
+    },
+    {
+      "src": "/images/canning-river/IMG_0797.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-06-30",
+      "lat": 69.148781,
+      "lng": -145.876847,
+      "alt_m": 449.9
+    },
+    {
+      "src": "/images/canning-river/IMG_0823.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-07-01",
+      "lat": 69.162658,
+      "lng": -145.888472,
+      "alt_m": 451.8
+    },
+    {
+      "src": "/images/canning-river/IMG_0839.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-07-01",
+      "lat": 69.205742,
+      "lng": -145.848633,
+      "alt_m": 423.7
+    },
+    {
+      "src": "/images/canning-river/IMG_0840.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-07-01",
+      "lat": 69.205742,
+      "lng": -145.848664,
+      "alt_m": 424
+    },
+    {
+      "src": "/images/canning-river/IMG_0875.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-07-01",
+      "lat": 69.240311,
+      "lng": -145.969908,
+      "alt_m": 395.6
+    },
+    {
+      "src": "/images/canning-river/IMG_0896.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2021-07-01",
+      "lat": 69.252511,
+      "lng": -145.970611,
+      "alt_m": 398.8
+    },
+    {
+      "src": "/images/canning-river/IMG_0906.webp",
+      "width": 2400,
+      "height": 1350,
+      "date": "2021-07-02",
+      "lat": 69.274772,
+      "lng": -146.015319,
+      "alt_m": 374.8
+    },
+    {
+      "src": "/images/canning-river/IMG_0917.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2021-07-02",
+      "lat": 69.286178,
+      "lng": -146.036894,
+      "alt_m": 371.9
+    },
+    {
+      "src": "/images/canning-river/IMG_0918.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2021-07-02"
+    }
+  ],
+  "great-wheel": [
+    {
+      "src": "/images/great-wheel/IMG_8164.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-19",
+      "lat": 64.808717,
+      "lng": -147.852281,
+      "alt_m": 139.4
+    },
+    {
+      "src": "/images/great-wheel/IMG_8177.webp",
+      "width": 2400,
+      "height": 1803,
+      "date": "2018-07-19",
+      "lat": 64.811531,
+      "lng": -147.847047,
+      "alt_m": 138.4
+    },
+    {
+      "src": "/images/great-wheel/IMG_8195.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-19"
+    },
+    {
+      "src": "/images/great-wheel/IMG_8234.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-19",
+      "lat": 67.662681,
+      "lng": -155.416244,
+      "alt_m": 544.9
+    },
+    {
+      "src": "/images/great-wheel/IMG_8256.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-19",
+      "lat": 67.661414,
+      "lng": -155.3219,
+      "alt_m": 591.3
+    },
+    {
+      "src": "/images/great-wheel/IMG_8273.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-20",
+      "lat": 67.654969,
+      "lng": -155.241775,
+      "alt_m": 587.9
+    },
+    {
+      "src": "/images/great-wheel/IMG_8277.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-20",
+      "lat": 67.654878,
+      "lng": -155.241378,
+      "alt_m": 585.1
+    },
+    {
+      "src": "/images/great-wheel/IMG_8319.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-20",
+      "lat": 67.668158,
+      "lng": -155.140883,
+      "alt_m": 683.3
+    },
+    {
+      "src": "/images/great-wheel/IMG_8330.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-21",
+      "lat": 67.708733,
+      "lng": -155.060347,
+      "alt_m": 905.3
+    },
+    {
+      "src": "/images/great-wheel/IMG_8336.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-21",
+      "lat": 67.723192,
+      "lng": -154.970964,
+      "alt_m": 581.3
+    },
+    {
+      "src": "/images/great-wheel/IMG_8342.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-23",
+      "lat": 67.628053,
+      "lng": -154.415939,
+      "alt_m": 345
+    },
+    {
+      "src": "/images/great-wheel/IMG_8345.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-23",
+      "lat": 67.628053,
+      "lng": -154.415939,
+      "alt_m": 345
+    },
+    {
+      "src": "/images/great-wheel/IMG_8362.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.628144,
+      "lng": -154.415664,
+      "alt_m": 346
+    },
+    {
+      "src": "/images/great-wheel/IMG_8367.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.604889,
+      "lng": -154.367919,
+      "alt_m": 325.1
+    },
+    {
+      "src": "/images/great-wheel/IMG_8389.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.554519,
+      "lng": -154.143311,
+      "alt_m": 284.2
+    },
+    {
+      "src": "/images/great-wheel/IMG_8396.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.554353,
+      "lng": -154.143586,
+      "alt_m": 283.7
+    },
+    {
+      "src": "/images/great-wheel/IMG_8413.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.551881,
+      "lng": -154.147064,
+      "alt_m": 281.8
+    },
+    {
+      "src": "/images/great-wheel/IMG_8416.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.55185,
+      "lng": -154.147003,
+      "alt_m": 281.2
+    },
+    {
+      "src": "/images/great-wheel/IMG_8429.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.506439,
+      "lng": -153.951094,
+      "alt_m": 263.9
+    },
+    {
+      "src": "/images/great-wheel/IMG_8434.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-24",
+      "lat": 67.504822,
+      "lng": -153.949739,
+      "alt_m": 268.8
+    },
+    {
+      "src": "/images/great-wheel/IMG_8438.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-25",
+      "lat": 67.481606,
+      "lng": -153.949981,
+      "alt_m": 831.4
+    },
+    {
+      "src": "/images/great-wheel/IMG_8449.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-25",
+      "lat": 67.475594,
+      "lng": -153.944472,
+      "alt_m": 1059.5
+    },
+    {
+      "src": "/images/great-wheel/IMG_8457.webp",
+      "width": 4000,
+      "height": 886,
+      "date": "2018-07-25",
+      "lat": 67.469925,
+      "lng": -153.945786,
+      "alt_m": 1157.3
+    },
+    {
+      "src": "/images/great-wheel/IMG_8469.webp",
+      "width": 4000,
+      "height": 937,
+      "date": "2018-07-25",
+      "lat": 67.469933,
+      "lng": -153.9458,
+      "alt_m": 1159.8
+    },
+    {
+      "src": "/images/great-wheel/IMG_8472.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-25",
+      "lat": 67.469933,
+      "lng": -153.9458,
+      "alt_m": 1159.6
+    },
+    {
+      "src": "/images/great-wheel/IMG_8510.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-25",
+      "lat": 67.503953,
+      "lng": -153.937058,
+      "alt_m": 264
+    },
+    {
+      "src": "/images/great-wheel/IMG_8529.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-26",
+      "lat": 67.503875,
+      "lng": -153.936431,
+      "alt_m": 272.1
+    },
+    {
+      "src": "/images/great-wheel/IMG_8553.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-26",
+      "lat": 67.470069,
+      "lng": -153.806122,
+      "alt_m": 255
+    },
+    {
+      "src": "/images/great-wheel/IMG_8582.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-26",
+      "lat": 67.415689,
+      "lng": -153.707061,
+      "alt_m": 245.9
+    },
+    {
+      "src": "/images/great-wheel/IMG_8589.webp",
+      "width": 2400,
+      "height": 1800,
+      "date": "2018-07-26",
+      "lat": 67.415597,
+      "lng": -153.706681,
+      "alt_m": 246.4
+    },
+    {
+      "src": "/images/great-wheel/IMG_8600.webp",
+      "width": 4000,
+      "height": 1324,
+      "date": "2018-07-26",
+      "lat": 67.380317,
+      "lng": -153.67195,
+      "alt_m": 220.1
+    },
+    {
+      "src": "/images/great-wheel/IMG_8603.webp",
+      "width": 4000,
+      "height": 1071,
+      "date": "2018-07-26"
+    }
+  ]
+}
