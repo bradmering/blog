@@ -27,7 +27,9 @@ We'd watched this happen across enough projects to recognize it wasn't a people 
 
 Handoff is an application stack with two parts - Workspace and Registry. Developers can build a Handoff workspace, in code, alongside their existing code base. The workspace is driven by a CLI toolchain designed to make it easy to extract data from sources and normalize it. The CLI manifests a local web application UI to allow developers to work with design system, run tests, write content, manage tokens, and build components. 
 
-The Registry gets published to the web, and becomes a living platform for collaboration. Handoff's registries are far more than just a documentation library. Because the DS is just well structured data, we can build robust tooling on top of that data. Users can prototype new components using Handoff's design workbench, using all we know about components and foundations to ensure that all the prototyping stays on brand and consistent.  
+The Registry gets published to the web, and becomes a living platform for collaboration. Handoff's registries are far more than just a documentation library. Because the DS is just well structured data, we can build robust tooling on top of that data. Users can prototype new components using Handoff's design workbench, using all we know about components and foundations to ensure that all the prototyping stays on brand and consistent.  Users can build landing pages with all our existing components on top of the DS, and save them as html, pdfs, or to the DS itself for future review
+
+The registry exposes all this data for machines to consume. We provide a robust MCP that works alongside the MCP's everyone is already using to hydrate your local context. But more importantly, Handoff enables AI powered mini applications to be built right on top of the design corpus. Our design workbench is an example of the power here.
 
 
 1. **Connect to Sources (Design, Code, Libraries, SaaS Tools** — authenticate against the API, using prebuild extraction or extending with customer specific needs
@@ -38,7 +40,7 @@ The documentation site renders component previews with code examples in multiple
 
 ## Architectural Decisions
 
-The core extraction pipeline is framework-agnostic by design. Outputs are configured, not hardcoded — the same pipeline can emit Style Dictionary JSON, Tailwind config, or raw CSS depending on what the consuming project needs.
+The core extraction pipeline is framework-agnostic by design. Outputs are configured, not hardcoded — the same pipeline can emit Style Dictionary JSON, Tailwind config, or raw CSS depending on what the consuming project needs. Handoff is fundamentally headless, providing a nice base UI, but making it effortless to compose new applications on the data set.
 
 We kept the CLI as the primary interface deliberately. This makes Handoff CI-able: run it in a GitHub Action on every merge to the design file, commit the output, and let the PR diff show what changed. The design-to-code gap becomes auditable.
 

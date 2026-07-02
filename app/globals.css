@@ -84,3 +84,12 @@ body {
   border-radius: 0.5rem;
   padding: 1.25rem 1.5rem;
 }
+
+/* Full-bleed breakout for embedded maps inside prose columns */
+.tracking-embed {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: 75vh;
+  min-height: 500px;
+  display: block;
+}

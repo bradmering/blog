@@ -50,7 +50,7 @@ export default async function PostPage({
 
         <div className="absolute top-6 left-0 right-0 max-w-5xl mx-auto px-6">
           <Link
-            href="/"
+            href="/blog"
             className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-sm transition-colors"
           >
             ← Journal
@@ -81,6 +81,15 @@ export default async function PostPage({
                 <span className="text-stone-200" aria-hidden>·</span>
                 <CoordinatesDisplay coords={post.coordinates} />
               </>
+            )}
+            {post.trackingUrl && (
+              <a
+                href="#live-tracking"
+                className="ml-auto flex items-center gap-1.5 text-xs font-semibold text-red-600 hover:text-red-700 border border-red-200 hover:border-red-300 rounded-full px-3 py-1 transition-colors"
+              >
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                Live Tracking
+              </a>
             )}
           </div>
 

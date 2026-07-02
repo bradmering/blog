@@ -23,6 +23,7 @@ export interface ItineraryStop {
   zoom?: number
   pitch?: number
   description?: string
+  image?: string
   routePoints?: [number, number][]  // intermediate [lng, lat] points between this stop and the next
 }
 
@@ -35,6 +36,7 @@ export interface Post {
   imageAlt: string
   tags: Tag[]
   coordinates?: Coordinates
+  trackingUrl?: string
   itinerary?: ItineraryStop[]
   content?: string
 }
@@ -145,6 +147,7 @@ export async function getPost(slug: string): Promise<Post | null> {
       imageAlt: (data.imageAlt as string) ?? '',
       tags: (data.tags as Tag[]) ?? [],
       coordinates: parseCoordinates(data.coordinates),
+      trackingUrl: (data.trackingUrl as string | undefined) ?? undefined,
       itinerary: (data.itinerary as ItineraryStop[] | undefined) ?? undefined,
       content: processed.toString(),
     }
