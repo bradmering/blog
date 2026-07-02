@@ -42,60 +42,68 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return
 
-    const latLngs = fullRoute.map(ll)
-    const bounds  = L.latLngBounds(latLngs)
+    const container = mapContainer.current
+    const latLngs   = fullRoute.map(ll)
+    const bounds     = L.latLngBounds(latLngs)
 
-    const map = L.map(mapContainer.current, {
-      scrollWheelZoom: false,
-      dragging:        false,
-      zoomControl:     false,
-      attributionControl: true,
-      keyboard:        false,
-      doubleClickZoom: false,
-      touchZoom:       false,
-      boxZoom:         false,
+    // Defer init until after paint so the container has its CSS dimensions
+    const raf = requestAnimationFrame(() => {
+      if (mapRef.current || !container) return
+
+      const map = L.map(container, {
+        scrollWheelZoom: false,
+        dragging:        false,
+        zoomControl:     false,
+        attributionControl: true,
+        keyboard:        false,
+        doubleClickZoom: false,
+        touchZoom:       false,
+        boxZoom:         false,
+      })
+
+      L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        { attribution: 'Tiles &copy; Esri', maxZoom: 17 }
+      ).addTo(map)
+
+      map.fitBounds(bounds, { paddingTopLeft: [60, 80], paddingBottomRight: [60, 80] })
+
+      // Route — glow underneath, line on top
+      L.polyline(latLngs, { color: '#ef4444', weight: 8,  opacity: 0.18, interactive: false }).addTo(map)
+      L.polyline(latLngs, { color: '#ef4444', weight: 2,  opacity: 0.9,  interactive: false }).addTo(map)
+
+      // Stop markers
+      const dots:  L.CircleMarker[] = []
+      const halos: L.CircleMarker[] = []
+      stops.forEach((stop, i) => {
+        const coord  = ll(stop.coordinates as [number, number])
+        const active = i === 0
+        halos.push(L.circleMarker(coord, {
+          radius: active ? 14 : 0,
+          color: '#ef4444', fillColor: '#ef4444', fillOpacity: 0.2, weight: 0,
+          interactive: false,
+        }).addTo(map))
+        dots.push(L.circleMarker(coord, {
+          radius: active ? 7 : 4,
+          color: '#ef4444', weight: 2,
+          fillColor: active ? '#ef4444' : '#ffffff', fillOpacity: 1,
+          interactive: false,
+        }).addTo(map))
+      })
+      dotRefs.current  = dots
+      haloRefs.current = halos
+      mapRef.current   = map
+      setMapLoaded(true)
     })
-
-    L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      { attribution: 'Tiles &copy; Esri', maxZoom: 17 }
-    ).addTo(map)
-
-    map.fitBounds(bounds, { paddingTopLeft: [60, 80], paddingBottomRight: [60, 80] })
-
-    // Route — glow underneath, line on top
-    L.polyline(latLngs, { color: '#ef4444', weight: 8,  opacity: 0.18, interactive: false }).addTo(map)
-    L.polyline(latLngs, { color: '#ef4444', weight: 2,  opacity: 0.9,  interactive: false }).addTo(map)
-
-    // Stop markers
-    const dots:  L.CircleMarker[] = []
-    const halos: L.CircleMarker[] = []
-    stops.forEach((stop, i) => {
-      const coord  = ll(stop.coordinates as [number, number])
-      const active = i === 0
-      halos.push(L.circleMarker(coord, {
-        radius: active ? 14 : 0,
-        color: '#ef4444', fillColor: '#ef4444', fillOpacity: 0.2, weight: 0,
-        interactive: false,
-      }).addTo(map))
-      dots.push(L.circleMarker(coord, {
-        radius: active ? 7 : 4,
-        color: '#ef4444', weight: 2,
-        fillColor: active ? '#ef4444' : '#ffffff', fillOpacity: 1,
-        interactive: false,
-      }).addTo(map))
-    })
-    dotRefs.current  = dots
-    haloRefs.current = halos
-
-    mapRef.current = map
-    setMapLoaded(true)
 
     return () => {
-      map.remove()
-      mapRef.current  = null
-      dotRefs.current  = []
-      haloRefs.current = []
+      cancelAnimationFrame(raf)
+      if (mapRef.current) {
+        mapRef.current.remove()
+        mapRef.current   = null
+        dotRefs.current  = []
+        haloRefs.current = []
+      }
     }
   }, [stops, fullRoute])
 

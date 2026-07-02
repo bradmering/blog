@@ -28,42 +28,51 @@ export default function GeoStory({ story }: { story: Story }) {
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return
 
+    const container = mapContainer.current
     const [lng, lat] = story.initialView.coordinates
-    const map = L.map(mapContainer.current, {
-      center: [lat, lng],
-      zoom: story.initialView.zoom,
-      scrollWheelZoom: false,
-      dragging:        false,
-      zoomControl:     false,
-      attributionControl: true,
-      keyboard:        false,
-      doubleClickZoom: false,
-      touchZoom:       false,
-      boxZoom:         false,
+
+    const raf = requestAnimationFrame(() => {
+      if (mapRef.current || !container) return
+
+      const map = L.map(container, {
+        center: [lat, lng],
+        zoom: story.initialView.zoom,
+        scrollWheelZoom: false,
+        dragging:        false,
+        zoomControl:     false,
+        attributionControl: true,
+        keyboard:        false,
+        doubleClickZoom: false,
+        touchZoom:       false,
+        boxZoom:         false,
+      })
+
+      L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        { attribution: 'Tiles &copy; Esri', maxZoom: 17 }
+      ).addTo(map)
+
+      if (story.route && story.route.length >= 2) {
+        glowLayerRef.current = L.polyline([], {
+          color: '#dc2626', weight: 8, opacity: 0.2, interactive: false,
+        }).addTo(map)
+        routeLayerRef.current = L.polyline([], {
+          color: '#dc2626', weight: 2.5, opacity: 0.9, interactive: false,
+        }).addTo(map)
+      }
+
+      mapRef.current = map
+      setMapLoaded(true)
     })
 
-    L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      { attribution: 'Tiles &copy; Esri', maxZoom: 17 }
-    ).addTo(map)
-
-    if (story.route && story.route.length >= 2) {
-      glowLayerRef.current = L.polyline([], {
-        color: '#dc2626', weight: 8, opacity: 0.2, interactive: false,
-      }).addTo(map)
-      routeLayerRef.current = L.polyline([], {
-        color: '#dc2626', weight: 2.5, opacity: 0.9, interactive: false,
-      }).addTo(map)
-    }
-
-    mapRef.current = map
-    setMapLoaded(true)
-
     return () => {
-      map.remove()
-      mapRef.current        = null
-      routeLayerRef.current = null
-      glowLayerRef.current  = null
+      cancelAnimationFrame(raf)
+      if (mapRef.current) {
+        mapRef.current.remove()
+        mapRef.current        = null
+        routeLayerRef.current = null
+        glowLayerRef.current  = null
+      }
     }
   }, [story])
 
