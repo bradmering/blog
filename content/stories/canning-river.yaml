@@ -257,8 +257,7 @@ chapters:
     type: map
     heading: "The Final Miles"
     subheading: "July 1 — 69.2°N"
-    text: |
-      
+    text: ""
     coordinates: [-145.910, 69.220]
     zoom: 11
     pitch: 25
