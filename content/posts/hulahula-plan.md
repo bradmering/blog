@@ -6,7 +6,7 @@ excerpt: |
 
   Fly from Fairbanks into Grasser's Strip (69.1° N,-144.61° W) at the headwaters of the Hulahula River, travel up onto the Okpilak glacier, then inflate the packrafts and ride the Hulahula north through its canyon, across the coastal plain, and out to the Beaufort Sea. From there, we'll cross the sea ice across the Arey Lagoon, down the coast west to Kaktovik (70.1° N,-143.6° W) on Barter Island, and catch the seat flight home.
 
-  This close to the solstice we'll be traveling under 24 hours of daylight, with the sun just touching the mountains in the night, before rising again above us. I plan to navigate with map and compass -dead reckoning -though we'll have GPS to back up if things go sideways
+  With the solstice just passed, we'll be traveling under 24 hours of daylight - the sun barely touching the mountains in the night, before rising again above us. I plan to navigate with map and compass, using dead reckoning unless things become unsafe.
 
   Here's our rough plan, with 10m sat images from monday. 
 image: /images/canning-river/IMG_0641.webp
@@ -188,9 +188,11 @@ itinerary:
     description: The seat flight leaves at 1pm, and the next one leaves the next week. Missing this flight is not optional!
 ---
 
-## Live Tracking
+## Maps
 
-We'll be carrying a Garmin inReach. If you want to follow along in real time, the tracking link will be live during the trip:
+Caltopo - [https://caltopo.com/m/Q7A1TCV](https://caltopo.com/m/Q7A1TCV)
+
+We'll be carrying a Garmin inReach. If you want to follow along in real time, the tracking link will be live during the trip - [https://share.garmin.com/KXR2Y](https://share.garmin.com/KXR2Y)
 
 <div id="live-tracking" class="tracking-embed not-prose">
 <iframe

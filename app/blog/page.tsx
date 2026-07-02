@@ -3,7 +3,7 @@ import { getAllStories } from '@/lib/stories'
 import type { Tag } from '@/lib/posts'
 import FeedRow from '@/components/FeedRow'
 
-const ALL_TAGS: Tag[] = ['adventures', 'reflections', 'development']
+const ALL_TAGS: Tag[] = ['adventures', 'reflections', 'projects']
 
 export const metadata = {
   title: 'Journal — Bradley Mering',

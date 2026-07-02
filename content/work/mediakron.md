@@ -13,14 +13,18 @@ Mediakron was dreamed up in the ed-tech lab at Boston College to create a robust
 
 A set of images could be placed on a map, connected to a timeline, and inserted into a long scholarly essay. Users could read the essay, click on an image to read more about the image, and then see it on a map to understand its geographical context. Then the user could scrub a timeline and see where the image was created, its history, and how it's temporarily connected to other images.
 
+![Rome](https://mediakron.bc.edu/wp-content/uploads/sites/232/2024/10/image-1.png)
+
 Students and professors found endless clever ways to push the toolchain - scans of 16th century cookbook with annotations connecting the recipes with the history of medicine and gender, a walking tour of Joyce's Ulysses with contemporary and historic Dublin maps, a linked map and timeline showing the rise and fall of the key buildings in Rome.
+
+![Timeline](https://mediakron.bc.edu/wp-content/uploads/sites/232/2024/10/image.png)
 
 Originally built in Flash, then Drupal 5, and finally as a Syfony/Backbonejs application, I hope to resurrect the core ideas of Mediakron in a new platform that supports cutting edge teaching and research.
 
 ## Design Challenges
 
-The key design principle is that everything is endlessly relatable to every other thing. Every item on a Mediakron site could be connected, related, or embedded in any context.  Mediakron supported 4 base items - Images, Videos, Audio, Texts - and 7 context types - Maps, Timelines, Stories, Topics
+The key design principle is that everything is endlessly relatable to every other thing. Every item on a Mediakron site could be connected, related, or embedded in any context.  Mediakron supported 4 base items - Images, Videos, Audio, Texts - and 7 context types - Maps, Timelines, Stories, Topics.
 
-## Open Source
+Fundamentally our goal was give people the power to create things we couldn't anticipate. 
 
-Boston College released the latest v1 under an MIT license though the technology chain has become very old at this point. I hope to be able to rebuild it on modern technology and make it available to a modern audience
+![Grid](https://mediakron.bc.edu/wp-content/uploads/sites/232/2024/10/image-3.png)
