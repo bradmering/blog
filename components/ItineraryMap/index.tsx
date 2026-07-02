@@ -1,22 +1,28 @@
 'use client'
 
 import { useRef, useEffect, useState, useMemo, useCallback } from 'react'
-import mapboxgl from 'mapbox-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import type { ItineraryStop } from '@/lib/posts'
+
+// Data is stored [lng, lat] (Mapbox convention); Leaflet wants [lat, lng]
+function ll([lng, lat]: [number, number]): [number, number] {
+  return [lat, lng]
+}
 
 export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
   const mapContainer = useRef<HTMLDivElement>(null)
-  const mapRef = useRef<mapboxgl.Map | null>(null)
-  const stopRefs = useRef<(HTMLDivElement | null)[]>([])
-  const [activeIdx, setActiveIdx] = useState(0)
-  const [mapLoaded, setMapLoaded] = useState(false)
+  const mapRef       = useRef<L.Map | null>(null)
+  const dotRefs      = useRef<L.CircleMarker[]>([])
+  const haloRefs     = useRef<L.CircleMarker[]>([])
+  const stopRefs     = useRef<(HTMLDivElement | null)[]>([])
+  const [activeIdx, setActiveIdx]   = useState(0)
+  const [mapLoaded, setMapLoaded]   = useState(false)
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
 
-  const openLightbox = useCallback((src: string) => setLightboxSrc(src), [])
+  const openLightbox  = useCallback((src: string) => setLightboxSrc(src), [])
   const closeLightbox = useCallback(() => setLightboxSrc(null), [])
 
-  // Close on ESC
   useEffect(() => {
     if (!lightboxSrc) return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeLightbox() }
@@ -24,7 +30,6 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
     return () => document.removeEventListener('keydown', onKey)
   }, [lightboxSrc, closeLightbox])
 
-  // Full polyline: stop coord → routePoints → next stop coord → ...
   const fullRoute = useMemo<[number, number][]>(() => {
     const pts: [number, number][] = []
     stops.forEach((s) => {
@@ -34,105 +39,85 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
     return pts
   }, [stops])
 
-  // Init map once
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return
 
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!
+    const latLngs = fullRoute.map(ll)
+    const bounds  = L.latLngBounds(latLngs)
 
-    const bounds = fullRoute.reduce(
-      (b, c) => b.extend(c),
-      new mapboxgl.LngLatBounds(fullRoute[0], fullRoute[0])
-    )
-
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/satellite-streets-v12',
-      bounds,
-      fitBoundsOptions: { padding: { top: 80, bottom: 80, left: 60, right: 60 } },
-      scrollZoom: false,
-      interactive: false,
+    const map = L.map(mapContainer.current, {
+      scrollWheelZoom: false,
+      dragging:        false,
+      zoomControl:     false,
+      attributionControl: true,
+      keyboard:        false,
+      doubleClickZoom: false,
+      touchZoom:       false,
+      boxZoom:         false,
     })
 
-    map.on('load', () => {
-      // Full route line — always visible
-      map.addSource('route', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          geometry: { type: 'LineString', coordinates: fullRoute },
-        },
-      })
-      map.addLayer({
-        id: 'route-glow',
-        type: 'line',
-        source: 'route',
-        layout: { 'line-join': 'round', 'line-cap': 'round' },
-        paint: { 'line-color': '#ef4444', 'line-width': 8, 'line-opacity': 0.18, 'line-blur': 4 },
-      })
-      map.addLayer({
-        id: 'route-line',
-        type: 'line',
-        source: 'route',
-        layout: { 'line-join': 'round', 'line-cap': 'round' },
-        paint: { 'line-color': '#ef4444', 'line-width': 2, 'line-opacity': 0.9 },
-      })
+    L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { attribution: 'Tiles &copy; Esri', maxZoom: 17 }
+    ).addTo(map)
 
-      // Stop markers as a GL layer
-      map.addSource('stops', {
-        type: 'geojson',
-        data: buildStopsGeoJSON(stops, 0),
-      })
-      map.addLayer({
-        id: 'stop-halo',
-        type: 'circle',
-        source: 'stops',
-        paint: {
-          'circle-radius': ['case', ['get', 'active'], 14, 0],
-          'circle-color': '#ef4444',
-          'circle-opacity': 0.2,
-        },
-      })
-      map.addLayer({
-        id: 'stop-dot',
-        type: 'circle',
-        source: 'stops',
-        paint: {
-          'circle-radius': ['case', ['get', 'active'], 7, 4],
-          'circle-color': ['case', ['get', 'active'], '#ef4444', '#ffffff'],
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#ef4444',
-        },
-      })
+    map.fitBounds(bounds, { paddingTopLeft: [60, 80], paddingBottomRight: [60, 80] })
 
-      setMapLoaded(true)
+    // Route — glow underneath, line on top
+    L.polyline(latLngs, { color: '#ef4444', weight: 8,  opacity: 0.18, interactive: false }).addTo(map)
+    L.polyline(latLngs, { color: '#ef4444', weight: 2,  opacity: 0.9,  interactive: false }).addTo(map)
+
+    // Stop markers
+    const dots:  L.CircleMarker[] = []
+    const halos: L.CircleMarker[] = []
+    stops.forEach((stop, i) => {
+      const coord  = ll(stop.coordinates as [number, number])
+      const active = i === 0
+      halos.push(L.circleMarker(coord, {
+        radius: active ? 14 : 0,
+        color: '#ef4444', fillColor: '#ef4444', fillOpacity: 0.2, weight: 0,
+        interactive: false,
+      }).addTo(map))
+      dots.push(L.circleMarker(coord, {
+        radius: active ? 7 : 4,
+        color: '#ef4444', weight: 2,
+        fillColor: active ? '#ef4444' : '#ffffff', fillOpacity: 1,
+        interactive: false,
+      }).addTo(map))
     })
+    dotRefs.current  = dots
+    haloRefs.current = halos
 
     mapRef.current = map
-    return () => { map.remove(); mapRef.current = null }
+    setMapLoaded(true)
+
+    return () => {
+      map.remove()
+      mapRef.current  = null
+      dotRefs.current  = []
+      haloRefs.current = []
+    }
   }, [stops, fullRoute])
 
-  // On active stop change: update marker + fly to stop
   useEffect(() => {
     if (!mapLoaded || !mapRef.current) return
-    const map = mapRef.current
-
-    const src = map.getSource('stops') as mapboxgl.GeoJSONSource
-    src?.setData(buildStopsGeoJSON(stops, activeIdx))
-
     const stop = stops[activeIdx]
-    map.flyTo({
-      center: stop.coordinates as [number, number],
-      zoom: stop.zoom ?? 10,
-      pitch: stop.pitch ?? 30,
-      bearing: 0,
-      duration: 1800,
-      essential: true,
+
+    dotRefs.current.forEach((dot, i) => {
+      const active = i === activeIdx
+      dot.setRadius(active ? 7 : 4)
+      dot.setStyle({ fillColor: active ? '#ef4444' : '#ffffff' })
+    })
+    haloRefs.current.forEach((halo, i) => {
+      halo.setRadius(i === activeIdx ? 14 : 0)
+    })
+
+    mapRef.current.flyTo(ll(stop.coordinates as [number, number]), stop.zoom ?? 10, {
+      duration: 1.8,
+      easeLinearity: 0.3,
     })
   }, [mapLoaded, activeIdx, stops])
 
-  // Intersection observer
   useEffect(() => {
     const observers: IntersectionObserver[] = []
     stopRefs.current.forEach((ref, i) => {
@@ -213,7 +198,7 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
         <div className="order-1 lg:order-2 lg:w-[48%] h-[40vh] lg:h-auto">
           <div className="sticky top-14 h-[40vh] lg:h-[calc(100vh-3.5rem)]">
             <div ref={mapContainer} className="w-full h-full" />
-            <div className="absolute bottom-5 left-5 bg-black/50 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full pointer-events-none">
+            <div className="absolute bottom-5 left-5 bg-black/50 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full pointer-events-none z-[1000]">
               {activeIdx + 1} / {stops.length}
             </div>
           </div>
@@ -244,15 +229,4 @@ export default function ItineraryMap({ stops }: { stops: ItineraryStop[] }) {
       )}
     </>
   )
-}
-
-function buildStopsGeoJSON(stops: ItineraryStop[], activeIdx: number): GeoJSON.FeatureCollection {
-  return {
-    type: 'FeatureCollection',
-    features: stops.map((stop, i) => ({
-      type: 'Feature',
-      properties: { active: i === activeIdx },
-      geometry: { type: 'Point', coordinates: stop.coordinates },
-    })),
-  }
 }

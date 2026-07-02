@@ -90,7 +90,7 @@ export type Chapter =
 export interface Story {
   title: string
   subtitle?: string
-  mapStyle: string
+  mapStyle?: string
   initialView: {
     coordinates: [number, number]
     zoom: number
