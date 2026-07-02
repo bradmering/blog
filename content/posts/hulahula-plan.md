@@ -65,7 +65,7 @@ itinerary:
         - 69.135416
   - id: upper-hulahula
     name: Creeking the upper river
-    dates: July 4th - July 5th
+    dates: July 4th
     coordinates:
       - -144.594418
       - 69.156524
@@ -84,7 +84,7 @@ itinerary:
         - 69.255243
   - id: hulahula-canyon
     name: Hulahula Canyon
-    dates: July 6th
+    dates: July 5th
     coordinates:
       - -144.58201
       - 69.305338
@@ -107,7 +107,7 @@ itinerary:
         - 69.344228
   - id: old-man
     name: Old Man Creek to Okpilak Hotsprings
-    dates: July 6th - 7th
+    dates: July 6th & 7th
     coordinates:
       - -144.015726
       - 69.303545
@@ -144,7 +144,7 @@ itinerary:
         - 69.727952
   - id: coastal-plain
     name: Coastal Plain to the Sea
-    dates: July 7th
+    dates: July 8th
     coordinates:
       - -143.79351
       - 69.769423
@@ -161,7 +161,7 @@ itinerary:
         - 69.986839
   - id: arey-lagoon
     name: Arey Lagoon
-    dates: July 8th
+    dates: July 9th
     coordinates:
       - -143.931653
       - 70.026788
@@ -178,7 +178,7 @@ itinerary:
         - 70.097433
   - id: kaktovik
     name: Kaktovik
-    dates: July 8 – 9
+    dates: July 10th
     coordinates:
       - -143.623
       - 70.134
