@@ -96,7 +96,7 @@ export default function AboutPage() {
 
         {/* Bio panel — right side overlay on md+ */}
         <div className="hidden md:flex absolute inset-0 items-start justify-end">
-          <div className="mt-24 mr-12 lg:mr-20 bg-black/60 backdrop-blur-md text-white rounded-xl px-8 py-10 max-w-xl lg:max-w-xl size">
+          <div className="mt-24 mr-12 lg:mr-20 bg-black/60 backdrop-blur-md text-white rounded-xl px-8 py-10 max-w-xl lg:max-w-2xl size">
             <h1 className="text-2xl font-bold tracking-tight mb-6">About</h1>
             <div className="space-y-4 text-lg text-white/85 leading-relaxed">
               <p>
@@ -114,27 +114,31 @@ export default function AboutPage() {
                 . 
               </p>
               <p className="border-t border-white/20 pt-4">
-                My heart lives amongst the rocks, the snow, the brotherhood of
-                the rope. I've lived near Boulder, Colorado on and off since 2008 -
+                My heart lives amongst the rocks, the snow, the community that forms
+                in the shadow of the heights. I've lived near Boulder, Colorado on and off since 2008 -
                 without question the best place to find balance as a climber.
                 Eldorado canyon - the stillness of the early morning,
                 surrounded by the silence of the rock, the rushing creek, the
                 canyon wrens looking for breakfast.
               </p>
               <p>
-                I spent a couple of years in Bozeman, Montana to learn how to
-                properly ice climb, and ski mountaineer. I spent six months living 
-                out of the jeep in the desert, climbing towers.
+                I moved to Bozeman, Montana in 2013 to learn how to properly ice climb, and ski 
+                mountaineer. I spent six months living out of my jeep in the desert, climbing towers.
+                I've climbed in the Himalayas, and the Cordillera Blanca, and attempted the North Face on 
+                Batian Peak of Mount Kenya.
               </p>
 
               <p className="border-t border-white/20 pt-4">
-                My undergraduate work was in philosophy and theater, and my masters
+                My undergraduate work was in philosophy. My masters
                 was from Boston College in continental philosophy. My primary
-                reading was on Søren Kierkegaard, Emmanuel Levinas, and Martin Heidegger.
+                reading was Kierkegaard, Levinas, and Heidegger.
               </p>
               <p>
-                Even then, the academy, as a career, was clearly fraught. Writing software
-                is honestly doing similar thinking - Highly structured logic, with
+                The academy, as a career, was clearly fraught. I honestly wasn't cut out for it. 
+                I loved it, but to some degree, it needs to consume you. You need to be disciplined,
+                focused, and dedicated to it, and I just wasn't. I wanted to climb, explore,
+                build things. I just never found the focus required to succeed at it. Writing software
+                is a similar kind of thinking - Highly structured logic, with
                 a much more reasonable problem space, and better pay.
               </p>
               <p>
@@ -142,9 +146,6 @@ export default function AboutPage() {
                 the discipline of the public act - the spectre of an audience as a prod
                 to hone the work. I miss trying hard to think the problem through, and 
                 think clearly for others.  
-              </p>
-              <p>
-                
               </p>
             </div>
             <div className="flex items-center gap-4 mt-7 pt-7 border-t border-white/20">
@@ -175,19 +176,55 @@ export default function AboutPage() {
           About
         </h1>
         <div className="space-y-4 text-base text-stone-600 leading-relaxed">
-          <p>
-            I&apos;m a dad, climber, trail runner, failed philosopher, and
-            developer.{" "}
-            <a
-              href="https://convertiv.com"
-              className="text-stone-900 underline underline-offset-2 decoration-stone-300 hover:decoration-stone-900 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Convertiv
-            </a>
-            .
-          </p>
+        <p>
+                I&apos;m a dad, climber, trail runner, failed philosopher, and
+                developer. By day, I help companies solve problems with
+                software for{" "}
+                <a
+                  href="https://convertiv.com"
+                  className="text-white underline underline-offset-2 decoration-white/40 hover:decoration-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Convertiv
+                </a>
+                . 
+              </p>
+              <p className="border-t border-white/20 pt-4">
+                My heart lives amongst the rocks, the snow, the community that forms
+                in the shadow of the heights. 
+                I've lived near Boulder, Colorado on and off since 2008 -
+                without question the best place to find balance as a climber.
+                Eldorado canyon - the stillness of the early morning,
+                surrounded by the silence of the rock, the rushing creek, the
+                canyon wrens looking for breakfast.
+              </p>
+              <p>
+                I moved to Bozeman, Montana in 2013 to learn how to properly ice climb, and ski 
+                mountaineer. I spent six months living out of my jeep in the desert, climbing towers.
+                I've climbed in the Himalayas, and the Cordillera Blanca, and attempted the North Face on 
+                Batian Peak of Mount Kenya.
+              </p>
+
+              <p className="border-t border-white/20 pt-4">
+                My undergraduate work was in philosophy. My masters
+                was from Boston College in continental philosophy. My primary
+                reading was Kierkegaard, Levinas, and Heidegger.
+              </p>
+              <p>
+                The academy, as a career, was clearly fraught, and I honestly wasn't cut out for it. 
+                I loved it, but to some degree, it needs to consume you. You need to be disciplined,
+                focused, and dedicated to it, and I just wasn't. I wanted to climb, explore,
+                build things. I just never found the focus required to succeed at it. Writing software
+                is a similar kind of thinking - Highly structured logic, with
+                a much more reasonable problem space, and better pay.
+              </p>
+              <p>
+                I hope this site becomes a place again to write in public, if only for 
+                the discipline of the public act - the spectre of an audience as a prod
+                to hone the work. I miss trying hard to think the problem through, and 
+                think clearly for others.  
+              </p>
         </div>
         <div className="flex items-center gap-5 mt-8 pt-8 border-t border-stone-100">
           <a

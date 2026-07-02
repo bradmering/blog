@@ -1,5 +1,5 @@
-title: "The Great Wheel"
-subtitle: "Eight days in Gates of the Arctic National Park"
+title: "Packrafting around the Arrigatch"
+subtitle: "A partial wheel, connecting the Noatak and Atlana rivers, with a trip up and down Arrigetch Creek"
 mapStyle: "mapbox://styles/mapbox/satellite-streets-v12"
 date: "2019-07-01"
 tags:
@@ -136,7 +136,7 @@ route:
 chapters:
   - id: title
     type: title
-    heading: "The Great Wheel"
+    heading: "Packrafting around the Arrigatch"
     subheading: "Eight days in Gates of the Arctic National Park"
     image: "/images/great-wheel/IMG_8396.webp"
     text: |
@@ -149,9 +149,7 @@ chapters:
     heading: "Fairbanks"
     subheading: "July 19 — Staging"
     text: |
-      Fairbanks in July is a disorienting place to start a wilderness trip. Thirty-two degrees, mosquitoes, strip malls. We spread maps across the hood of a rental truck in a parking lot behind Fred Meyer and tried to translate weeks of planning into what actually fit in five dry bags.
-
-      The flight north left at six in the morning.
+      I like Fairbanks. Perched on the edge of a lot of wilderness, lots of interesting people. We spent the day organi
     coordinates: [-147.852, 64.809]
     zoom: 11
     pitch: 0
