@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Bradley Mering',
-  description: 'Adventures, reflections, and development.',
+  description: 'Adventures, reflections, and projects.',
 }
 
 export default function RootLayout({
