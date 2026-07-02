@@ -27,12 +27,12 @@ We'd watched this happen across enough projects to recognize it wasn't a people 
 
 Handoff is an application stack with two parts - Workspace and Registry. Developers can build a Handoff workspace, in code, alongside their existing code base. The workspace is driven by a CLI toolchain designed to make it easy to extract data from sources and normalize it. The CLI manifests a local web application UI to allow developers to work with design system, run tests, write content, manage tokens, and build components. 
 
-![/images/handoff/colors.webp](Showing color foundational data)
+![Showing color foundational data](/images/handoff/colors.webp)
 
 
 The Registry gets published to the web, and becomes a living platform for collaboration. Handoff's registries are far more than just a documentation library. Because the DS is just well structured data, we can build robust tooling on top of that data. Users can prototype new components using Handoff's design workbench, using all we know about components and foundations to ensure that all the prototyping stays on brand and consistent.  Users can build landing pages with all our existing components on top of the DS, and save them as html, pdfs, or to the DS itself for future review
 
-![/images/handoff/components.webp](Showing component construction)
+![Showing component construction](/images/handoff/components.webp)
 
 The registry exposes all this data for machines to consume. We provide a robust MCP that works alongside the MCP's everyone is already using to hydrate your local context. But more importantly, Handoff enables AI powered mini applications to be built right on top of the design corpus. Our design workbench is an example of the power here.
 
@@ -41,7 +41,7 @@ The registry exposes all this data for machines to consume. We provide a robust 
 2. **Extract and Build Data Set - Tokens and Components** — pull and compose all the required pieces, tokens, foundations, components, documentation can be extracted from all the sources, and then enriched with manual documentation and creation
 3. **Export and build** — output tokens in the configured format, generate a static documentation site
 
-![/images/handoff/workbench.webp](Showing design workbench)
+![Showing design workbench](/images/handoff/workbench.webp)
 
 The documentation site renders component previews with code examples in multiple frameworks, shows all token values with live swatches, and stays current with every build.
 

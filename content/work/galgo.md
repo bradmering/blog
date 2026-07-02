@@ -23,7 +23,7 @@ Scholars Nuria Alonso García and Alison Caplan built the intellectual framework
 
 GALGO is a searchable, multilayered glossary database with a custom research interface. The core capability is comparative: a user can look up a keyword and trace not just its definition, but its usage patterns — within a single text, across the corpus, and across historical periods.
 
-![/images/galgo/text.webp](A spanish language text showing a glossary context)
+![A spanish language text showing a glossary context](/images/galgo/text.webp)
 
 The initial application was build on a Laravel API with a backbone.js frontend.  By making the application API driven, we could create a flexible frontend that would allow us to mutate the text in the browser - injecting and transforming the DOM as needed. We encoded the texts as TEI XML and wrote an algorithm to parse and index the texts into key words. We then created a glossary system that would allow experts to define key terms, and the various forms of the terms to make them identifiable in the text. Because the texts were indexed with robust positional data, we could create associations between a term and a "context" - a word in position in a text.
 
@@ -33,7 +33,7 @@ In 2026, Alison and Nuria reached back out to me. The app was still in active us
 
 We are currently road testing version 2.0.  Completely rebuilt, ground-up, it has now become a much more powerful tool. Using NextJS and Postgres, we could preserve much of the headless architecture, but build powerful, modern tools for text management, search, accessibility, and cross text term linking.
 
-![/images/galgo/macbeth.webp](A passage from Macbeth in reading mode, with annotations and context)
+![A passage from Macbeth in reading mode, with annotations and context](/images/galgo/macbeth.webp)
 
 There are three features I'm especially proud of - 
 

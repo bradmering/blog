@@ -1,5 +1,6 @@
 import WorkCard from "@/components/WorkCard";
 import type { WorkItem } from "@/components/WorkCard";
+import { getAllWork } from "@/lib/work";
 
 export const metadata = {
   title: "About — Bradley Mering",
@@ -11,7 +12,7 @@ const work: WorkItem[] = [
     description:
       "An open-source design-to-code platform that automates the handoff layer between design and engineering — transforming Figma components into tokens, documentation, and exportable code.",
     image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
+      "/images/handoff/splash.webp",
     tags: ["Design Systems", "React", "TypeScript", "Node.js"],
     slug: "handoff",
     year: "2022–present",
@@ -21,7 +22,7 @@ const work: WorkItem[] = [
     description:
       "An open-source multimedia timeline platform built for Boston College that lets educators and journalists construct interactive narratives from video, images, documents, and text.",
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+      "/images/mediakron/splash.webp",
     tags: ["React", "WordPress", "PHP", "Education"],
     slug: "mediakron",
     year: "2018–present",
@@ -31,7 +32,7 @@ const work: WorkItem[] = [
     description:
       "GALGO — Golden Age Literature Glossary Online — is a searchable Spanish-English glossary and research platform for scholars and readers of 16th and 17th century Spanish literature.",
     image:
-      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
+      "/images/galgo/splash.webp",
     tags: ["Digital Humanities", "React", "Search", "Education"],
     slug: "galgo",
     year: "2022–present",
@@ -82,6 +83,7 @@ function IconGitHub() {
 }
 
 export default function AboutPage() {
+  const projects = getAllWork()
   return (
     <div>
       {/* Hero: full image with bio overlapping right */}
@@ -127,9 +129,8 @@ export default function AboutPage() {
 
               <p className="border-t border-white/20 pt-4">
                 My undergraduate work was in philosophy and theater, and my masters
-                was from Boston College in contentntal philosophy. My primary
+                was from Boston College in continental philosophy. My primary
                 reading was on Søren Kierkegaard, Emmanuel Levinas, and Martin Heidegger.
-                I 
               </p>
               <p>
                 Even then, the academy, as a career, was clearly fraught. Writing software
@@ -214,7 +215,7 @@ export default function AboutPage() {
           Selected Work
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {work.map((item) => (
+          {projects.map((item) => (
             <WorkCard key={item.title} work={item} />
           ))}
         </div>

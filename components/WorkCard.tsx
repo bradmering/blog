@@ -1,3 +1,4 @@
+import { WorkProject } from '@/lib/work'
 import Link from 'next/link'
 
 export interface WorkItem {
@@ -10,7 +11,7 @@ export interface WorkItem {
   year: string
 }
 
-export default function WorkCard({ work }: { work: WorkItem }) {
+export default function WorkCard({ work }: { work: WorkProject }) {
   const href = work.slug ? `/work/${work.slug}` : work.url
   const isExternal = !work.slug && !!work.url
 
@@ -33,7 +34,7 @@ export default function WorkCard({ work }: { work: WorkItem }) {
           </span>
         </div>
         <p className="text-sm text-stone-500 leading-relaxed mb-3">
-          {work.description}
+          {work.excerpt ?? work.content?.slice(0, 100) + '...'}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {work.tags.map((tag) => (

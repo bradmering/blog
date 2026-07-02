@@ -5,7 +5,7 @@ import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import remarkHtml from 'remark-html'
 
-export type Tag = 'adventures' | 'reflections' | 'development'
+export type Tag = 'adventures' | 'reflections' | 'projects'
 
 // Coordinates stored in frontmatter — either a single "lat,lng" string
 // or an object with start/end for a route

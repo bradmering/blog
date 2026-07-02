@@ -1,6 +1,11 @@
 title: "Canning River"
 subtitle: "Seven days floating through the Arctic National Wildlife Refuge"
 mapStyle: "mapbox://styles/mapbox/satellite-streets-v12"
+date: "2022-06-26"
+tags:
+  - adventures
+  - alaska
+  - packrafting
 
 initialView:
   coordinates: [-145.95, 68.98]
@@ -133,7 +138,7 @@ chapters:
     type: title
     heading: "Canning River"
     subheading: "Seven days through the Arctic National Wildlife Refuge"
-    image: "/images/canning-river/IMG_0641.webp"
+    image: "/images/canning-river/IMG_0444.webp"
     text: |
       The Canning River originates in the Philip Smith Mountains at the eastern edge of the Brooks Range, drains north across the Arctic National Wildlife Refuge, and empties into the Beaufort Sea near the Alaska–Yukon border. I got to share it with my Dad, sister Liz, and my friend Chris.
 

@@ -12,6 +12,12 @@ export default function Nav() {
         </Link>
         <nav className="flex items-center gap-8">
           <Link
+            href="/work"
+            className="text-sm text-stone-500 hover:text-stone-900 transition-colors"
+          >
+            Work
+          </Link>
+          <Link
             href="/blog"
             className="text-sm text-stone-500 hover:text-stone-900 transition-colors"
           >

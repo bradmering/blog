@@ -1,6 +1,11 @@
 title: "The Great Wheel"
 subtitle: "Eight days in Gates of the Arctic National Park"
 mapStyle: "mapbox://styles/mapbox/satellite-streets-v12"
+date: "2019-07-01"
+tags:
+  - adventures
+  - alaska
+  - packrafting
 
 initialView:
   coordinates: [-147.852, 64.809]
@@ -133,7 +138,7 @@ chapters:
     type: title
     heading: "The Great Wheel"
     subheading: "Eight days in Gates of the Arctic National Park"
-    image: "/images/great-wheel/IMG_8457.webp"
+    image: "/images/great-wheel/IMG_8396.webp"
     text: |
       Eight days in a wilderness that doesn't have names for most of it. We flew into Gates of the Arctic from Fairbanks — a Cessna, a gravel bar, and four words from the pilot when he unloaded the packs: *see you in eight days*.
 

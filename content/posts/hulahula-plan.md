@@ -12,7 +12,10 @@ excerpt: |
 image: /images/canning-river/IMG_0641.webp
 imageAlt: The foothills of the Arrigetch Range in the Gates of the Arctic — similar terrain to the planned route through the eastern Brooks Range
 tags:
+  - plans
   - adventures
+  - alaska
+  - packrafting
 coordinates:
   - start: -144.61,69.1
   - end: -143.6,70.1
