@@ -3,7 +3,7 @@ title: "Galgo"
 year: "2012 (v1) 2026 (v2)"
 type: "Academic Platform"
 url: "https://galgo.digital"
-image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&q=80"
+image: "https://www.galgo.digital/galgo.bg.webp"
 imageAlt: "Open books and manuscripts representing Golden Age Spanish literature research"
 tags: ["Digital Humanities", "React", "Search", "Education"]
 excerpt: "GALGO — Golden Age Literature Glossary Online — is a platform for textual annotation and collaborative reading.  Initial restricted to a corpus of Golden Age Spanish language texts, the latest version supports a wide range of texts and languages."
@@ -23,6 +23,8 @@ Scholars Nuria Alonso García and Alison Caplan built the intellectual framework
 
 GALGO is a searchable, multilayered glossary database with a custom research interface. The core capability is comparative: a user can look up a keyword and trace not just its definition, but its usage patterns — within a single text, across the corpus, and across historical periods.
 
+![/images/galgo/text.webp](A spanish language text showing a glossary context)
+
 The initial application was build on a Laravel API with a backbone.js frontend.  By making the application API driven, we could create a flexible frontend that would allow us to mutate the text in the browser - injecting and transforming the DOM as needed. We encoded the texts as TEI XML and wrote an algorithm to parse and index the texts into key words. We then created a glossary system that would allow experts to define key terms, and the various forms of the terms to make them identifiable in the text. Because the texts were indexed with robust positional data, we could create associations between a term and a "context" - a word in position in a text.
 
 In 2026, Alison and Nuria reached back out to me. The app was still in active use, remarkable considering that we had not significantly extended it in over 10 years. The institution hosting the application could no longer continue to host it. To support it going forward, we needed a new host, technology stack, and we needed to make it self-serviceable.
@@ -30,6 +32,8 @@ In 2026, Alison and Nuria reached back out to me. The app was still in active us
 ## The Future Version
 
 We are currently road testing version 2.0.  Completely rebuilt, ground-up, it has now become a much more powerful tool. Using NextJS and Postgres, we could preserve much of the headless architecture, but build powerful, modern tools for text management, search, accessibility, and cross text term linking.
+
+![/images/galgo/macbeth.webp](A passage from Macbeth in reading mode, with annotations and context)
 
 There are three features I'm especially proud of - 
 
