@@ -140,16 +140,18 @@ chapters:
     subheading: "Eight days in Gates of the Arctic National Park"
     image: "/images/great-wheel/IMG_8396.webp"
     text: |
-      Eight days in a wilderness that doesn't have names for most of it. We flew into Gates of the Arctic from Fairbanks — a Cessna, a gravel bar, and four words from the pilot when he unloaded the packs: *see you in eight days*.
+      Eight days in a wilderness that doesn't have names for most of it. We flew into Gates of the Arctic from Fairbanks — a Twin Otter. Landing on a oxbow lake, the river having abandoned its channel, we unloaded and set off up and over the ridge.
 
-      What followed was a counter-clockwise arc through the central Brooks Range: northeast up a nameless drainage, over a 1,157-meter ridge, then south and west back to the extraction strip. We called it the Great Wheel.
+      What followed was a counter-clockwise arc through the central Brooks Range: northeast up a nameless drainage, over a the divide, and then inflating the rafts, paddling down the Alatna river.  
+
+      We paused at the confluence of the Alatna and Arrigetch creek, and hiked up the drainage towards the towering peaks. We camped for a night high in the valley, and then creeked back down to the now large river.  
 
   - id: fairbanks
     type: map
     heading: "Fairbanks"
     subheading: "July 19 — Staging"
     text: |
-      I like Fairbanks. Perched on the edge of a lot of wilderness, lots of interesting people. We spent the day organi
+      I like Fairbanks. Perched on the edge of a lot of wilderness, lots of interesting people. We spent the day organizing gear, and shopping for food.
     coordinates: [-147.852, 64.809]
     zoom: 11
     pitch: 0
@@ -161,18 +163,16 @@ chapters:
     layout: duo
     images:
       - src: "/images/great-wheel/IMG_8164.webp"
-        caption: "Fairbanks staging — gear check before the flight north"
+        caption: "Pictures of the map"
       - src: "/images/great-wheel/IMG_8177.webp"
-        caption: "The Cessna that would take us into the park"
+        caption: "Me with a bear sticker"
 
   - id: drop-in
     type: map
     heading: "The Drop-In"
     subheading: "July 19 — 67.7°N, 545m"
     text: |
-      The Cessna banked hard left and the valley opened below us — a long drainage running northeast from peaks we hadn't named yet. The pilot set us down on a gravel bar, engine still ticking as he unloaded packs, and left us with four words: *see you in eight days*.
-
-      We watched the plane until we couldn't hear it anymore.
+      The Cessna banked hard left and the valley opened below us. The pilot set us down on the water, and we unloaded the gear. We watched the plane until we couldn't hear it anymore. The silence that follows, in the vast, trackless wilderness is wonderful.
     coordinates: [-155.416, 67.663]
     zoom: 10
     pitch: 45
@@ -186,18 +186,18 @@ chapters:
     layout: duo
     images:
       - src: "/images/great-wheel/IMG_8234.webp"
-        caption: "The drop-in gravel bar — our first camp"
+        caption: "A twin otter parked in the water"
       - src: "/images/great-wheel/IMG_8256.webp"
-        caption: "Looking east into the drainage we'd follow for two days"
+        caption: "Starting up the towards the divide"
 
   - id: day2
     type: map
     heading: "Moving East"
     subheading: "July 20 — Day 2"
     text: |
-      The first full day was compass and tussock. We weren't on a river yet, just crossing open ground in the direction we needed to go. The terrain was harder than the map suggested — tussocks two feet high in every low spot, unstable and exhausting under a heavy pack.
+      The first full day was compass and tussock. Overland travel is much harder than the miles or elevation would suggest. The permafrost melts on the top, and creates tussocks a foot or two high, often with mud and water underneath. Carrying 60lbs of gear, foot, rafts and drysuits makes for a slow day.
 
-      By afternoon the drainage narrowed and the walking improved. We made camp on a gravel bar beside a creek cold enough to numb your hands in thirty seconds.
+      By afternoon the drainage narrowed and the walking improved. We forded several streams, and made camp on a gravel bar beside a creek cold enough to numb your hands in thirty seconds.
     coordinates: [-155.141, 67.668]
     zoom: 11
     pitch: 40
@@ -211,20 +211,18 @@ chapters:
     layout: trio
     images:
       - src: "/images/great-wheel/IMG_8273.webp"
-        caption: "Day 2 — open tundra travel"
+        caption: "Sagar and Sarah crossing a river"
       - src: "/images/great-wheel/IMG_8319.webp"
-        caption: "The valley widening to the east"
+        caption: "Mark exploring a rad slot canyon"
       - src: "/images/great-wheel/IMG_8277.webp"
-        caption: "Late afternoon light on the ridgeline"
+        caption: "Wolf tracks in th emud"
 
   - id: day3-climb
     type: map
     heading: "Climbing"
     subheading: "July 21 — 905m"
     text: |
-      We left camp at six in the morning with empty stomachs and made 900 meters by noon. The ridge above camp was loose shale and then solid granite, then nothing — just sky and a view that stretched sixty miles in every direction.
-
-      A Dall sheep watched us from fifty meters, completely unbothered. We were the oddity here.
+      We climbed up the ridge above camp to the divide. Beautiful mountain lakes beaconed, so Mark, Liz and I jumped in.  Then we started a long descent down the divide to the Alatna River.
     coordinates: [-155.060, 67.709]
     zoom: 11
     pitch: 50
@@ -240,16 +238,16 @@ chapters:
       - src: "/images/great-wheel/IMG_8330.webp"
         caption: "At 905m — the first significant climb of the route"
       - src: "/images/great-wheel/IMG_8336.webp"
-        caption: "The descent route back into the valley"
+        caption: "First View of the Atlana River"
 
   - id: camp
     type: map
     heading: "River Camp"
     subheading: "July 23 — Day 5"
     text: |
-      The camp was on a gravel bar where a small tributary joined the main drainage. We stayed two nights — the weather had turned grey and the mosquitoes were thick enough that nobody wanted to pack up in the rain.
+      We camped on a plateau above the river, watching a solitary black wolf race up the river below us. The river was narrow, fast and tree lined. The river was riskier than the class II grade would suggest with significant entrapment risk, and low sweepers.
 
-      It was the right call. The second night the skies cleared and we had the best fire of the trip.
+      It was exciting to be on the river, but the first day on the river was stressful and dangerous.
     coordinates: [-154.416, 67.628]
     zoom: 12
     pitch: 35
@@ -259,29 +257,20 @@ chapters:
     align: left
 
   - id: camp-article
-    type: article
-    blocks:
-      - text: |
-          ## Days Four and Five
-
-          The layover gave us time to scout. We split up — two people upstream to look at the drainage we'd come down, two people downstream to understand what the next two days would bring. Both parties came back with the same report: technical terrain, no shortcuts.
-      - image: "/images/great-wheel/IMG_8345.webp"
-        caption: "Camp on day five — two-night stay on the gravel bar"
-        align: right
-      - text: |
-          The evening of day five was the clearest night of the trip. No wind, no clouds, the sun circling low over the ridge to the north. We stayed up too late talking about the route ahead — a long descending traverse to a high ridge we could see from camp but couldn't yet read.
-
-          Someone spotted a wolf on the far bank just before midnight. By the time we all turned around, it was gone.
-      - image: "/images/great-wheel/IMG_8362.webp"
-        caption: "Morning of day six — breaking camp"
-        align: left
+    type: gallery
+    layout: duo
+    images: 
+      - src: "/images/great-wheel/IMG_8345.webp"
+        caption: "Camping on the gravel bar"
+      - src: "/images/great-wheel/IMG_8362.webp"
+        caption: "Breaking camp"
 
   - id: day6
     type: map
     heading: "Long Miles"
     subheading: "July 24 — Day 6"
     text: |
-      The valley widened and the route became easier — we were following actual running water now, which meant no compass navigation and faster ground. Eighteen kilometers in seven hours.
+      The valley widened and the route became easier. The wider river reduced the entrapment risk, and the sweepers were easier to avoid.
 
       The map showed a significant ridge ahead. We made camp early to get a full night before the push.
     coordinates: [-154.143, 67.555]
@@ -296,20 +285,20 @@ chapters:
     layout: quad
     images:
       - src: "/images/great-wheel/IMG_8367.webp"
-        caption: "The river bending east"
+        caption: "Liz in her raft"
       - src: "/images/great-wheel/IMG_8389.webp"
-        caption: "Open valley floor — best walking of the trip"
+        caption: "Paddling downstreem"
       - src: "/images/great-wheel/IMG_8396.webp"
-        caption: "Afternoon break"
+        caption: "Mark drifting with the current"
       - src: "/images/great-wheel/IMG_8413.webp"
-        caption: "Ridge visible to the southeast"
+        caption: "Hard to motivate to paddle."
 
   - id: high-ridge
     type: map
     heading: "The High Ridge"
     subheading: "July 25 — 1,157m"
     text: |
-      The summit was a false flat — you crested what looked like the top and then walked another two hundred meters to the actual high point. The panorama was complete in every direction. Nothing between us and the horizon but air.
+      We hiked up to a high ridge below the Arrigetch Creek. 
 
       We sat there for an hour. Nobody had any desire to go back down.
     coordinates: [-153.946, 67.470]
@@ -325,9 +314,9 @@ chapters:
     layout: duo
     images:
       - src: "/images/great-wheel/IMG_8416.webp"
-        caption: "The approach to the high ridge — final camp below"
+        caption: "More paddling"
       - src: "/images/great-wheel/IMG_8429.webp"
-        caption: "Climbing — 900m and rising"
+        caption: "Cutting off a big oxbow into the creek"
 
   - id: ridge-pano-1
     type: image
@@ -346,16 +335,14 @@ chapters:
       - src: "/images/great-wheel/IMG_8434.webp"
         caption: "On the ridge"
       - src: "/images/great-wheel/IMG_8449.webp"
-        caption: "At the high point — 1,059m before the final push to the summit"
+        caption: "The Arrigetch Mountains"
 
   - id: descent
     type: map
     heading: "The Descent"
     subheading: "July 25–26 — Back to the valley"
     text: |
-      The descent took most of the afternoon — loose scree, then gravel fans, then tundra. We were moving toward the extraction point now. The math had shifted from *how far* to *how long*.
-
-      We made the valley floor by evening and camped on the first flat ground we found.
+      The descent took most of the afternoon — loose scree, then gravel fans, then tundra.
     coordinates: [-153.937, 67.504]
     zoom: 11
     pitch: 45
@@ -370,18 +357,16 @@ chapters:
       - src: "/images/great-wheel/IMG_8472.webp"
         caption: "Last look from the ridge"
       - src: "/images/great-wheel/IMG_8510.webp"
-        caption: "The descent — picking a line through the scree"
+        caption: "Camping at the confluence"
       - src: "/images/great-wheel/IMG_8529.webp"
-        caption: "Back on the valley floor"
+        caption: "Packing up for tomorrow"
 
   - id: journey-end
     type: map
     heading: "Journey's End"
     subheading: "July 26 — 67.4°N, 220m"
     text: |
-      The last day was eight hours of easy valley travel, following the drainage south to the extraction strip. We heard the plane before we saw it — that distant buzz that meant the week was over.
 
-      The pilot banked over the ridge on the way out and we looked down at the route we'd just walked, **an eight-day arc through wilderness that doesn't have a name for most of it**.
     coordinates: [-153.672, 67.380]
     zoom: 11
     pitch: 40
@@ -395,9 +380,9 @@ chapters:
     layout: duo
     images:
       - src: "/images/great-wheel/IMG_8553.webp"
-        caption: "Final miles down the valley"
+        caption: "A backpack"
       - src: "/images/great-wheel/IMG_8582.webp"
-        caption: "The extraction strip from above"
+        caption: "The lake at the end."
 
   - id: exit-pano
     type: image
