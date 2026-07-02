@@ -244,35 +244,9 @@ chapters:
     align: left
 
   - id: foothills-article
-    type: article
-    blocks:
-      - text: |
-          ## Days Four and Five
-
-          The river went quiet on day four. We were deep in the foothills transition zone — too far from the mountains to feel their scale, not yet close enough to the coast to sense the sea. The tundra was green and waterlogged, cut by oxbow ponds that reflected a sky that never fully darkened.
-      - image: "/images/canning-river/LIZ80600.webp"
-        caption: "Afternoon light on the tundra, day four"
-        align: right
-      - text: |
-          Day five brought the first real headwind. We paddled from seven in the morning until the light shifted gold around ten at night, covering thirty kilometers against a cold north breeze that smelled faintly of ice and open ocean.
-
-          The others spotted a wolf on a gravel bar. I was looking at my compass and missed it — one of those small trip regrets that never entirely goes away. That evening we found a dry camp on a low ridge and made the first hot meal in two days.
-
-  - id: coastal-plain
-    type: map
-    heading: "The Coastal Plain"
-    subheading: "June 30 — 69.1°N, 450m"
-    text: |
-      We crossed into the coastal plain sometime around midnight, though it was still full light. The sun circled low without setting.
-
-      The tundra stretched in every direction without feature. The river had slowed almost to nothing — we paddled more than floated, watching the compass more than the banks.
-    coordinates: [-145.877, 69.149]
-    zoom: 10
-    pitch: 20
-    bearing: 5
-    routeProgress: 0.65
-    marker: true
-    align: right
+    type: image
+    image: "/images/canning-river/LIZ80600.webp"
+    caption: "Afternoon light on the tundra, day four"
 
   - id: plain-image
     type: image
@@ -284,9 +258,7 @@ chapters:
     heading: "The Final Miles"
     subheading: "July 1 — 69.2°N"
     text: |
-      We could smell the sea before we could see it — a cold, clean salt smell cutting through the sweetness of the tundra. The lagoon appeared as a silver line on the horizon.
-
-      Eight more kilometers. We paddled.
+      
     coordinates: [-145.910, 69.220]
     zoom: 11
     pitch: 25
