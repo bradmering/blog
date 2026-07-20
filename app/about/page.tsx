@@ -89,17 +89,36 @@ export default function AboutPage() {
   const projects = getAllWork()
   return (
     <div>
-      {/* Hero: full image with bio overlapping right */}
-      <div className="relative">
-        <img
-          src="/images/about-cover.jpg"
-          alt="Bradley Mering on a snowy ridge in the Rocky Mountains"
-          className="w-full h-auto block"
-        />
+      {/* Hero: on lg+, image pins full-screen (parallax-style, like the story
+          chapters) and the bio card scrolls independently over it, then
+          releases into the Work section. Tablet/mobile get the stacked
+          layout below instead — no pinning. */}
+      <div className="relative lg:h-[320vh]">
+        <div className="lg:sticky lg:top-14 lg:h-[calc(100vh-3.5rem)] lg:overflow-hidden lg:bg-black">
+          <img
+            src="/images/about-cover.jpg"
+            alt="Bradley Mering on a snowy ridge in the Rocky Mountains"
+            className="w-full h-auto block lg:absolute lg:inset-0 lg:w-full lg:h-full lg:object-cover lg:object-[center_25%]"
+          />
+          <div className="hidden lg:block absolute inset-0 pointer-events-none bg-gradient-to-l from-black/70 via-black/10 to-transparent" />
+          <div className="hidden lg:flex absolute bottom-6 left-0 right-0 flex-col items-center gap-1.5 pointer-events-none">
+            <div className="flex flex-col items-center gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white shadow-lg shadow-black/30">
+              <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Scroll</span>
+              <svg className="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>
 
-        {/* Bio panel — right side overlay on md+ */}
-        <div className="hidden md:flex absolute inset-0 items-start justify-end">
-          <div className="mt-24 mr-12 lg:mr-20 bg-black/60 backdrop-blur-md text-white rounded-xl px-8 py-10 max-w-xl lg:max-w-2xl size">
+        {/* Bio panel — scrolls over the pinned image on lg+. Starts near the
+            top of its zone (not vertically centered) since the bio is long
+            enough that centering would push its start off-screen. */}
+        <div
+          className="hidden lg:flex absolute top-0 left-0 right-0 items-start justify-end px-16 pt-28"
+          style={{ height: '200vh', zIndex: 20 }}
+        >
+          <div className="mr-10 xl:mr-20 bg-black/60 backdrop-blur-md text-white rounded-xl px-8 py-10 max-w-xl xl:max-w-2xl">
             <h1 className="text-2xl font-bold tracking-tight mb-6">About</h1>
             <div className="space-y-4 text-lg text-white/85 leading-relaxed">
               <p>
@@ -173,8 +192,8 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Bio — mobile only */}
-      <div className="md:hidden px-6 py-10 max-w-2xl">
+      {/* Bio — mobile & tablet (stacked, no overlay) */}
+      <div className="lg:hidden px-6 py-10 max-w-2xl">
         <h1 className="text-3xl font-bold text-stone-900 tracking-tight mb-6">
           About
         </h1>
