@@ -1799,7 +1799,7 @@ chapters:
     subheading: "July 6 — Day 5"
     heading: "A muskox visiting the springs"
     text: |
-      Muskoxen are covered in thick wool. This one stops to scratch itself on a rock before wandering back down the valley.
+       This one stops to scratch itself on a rock before wandering back down the valley.
 
   
   - id: wolverine
@@ -1904,7 +1904,7 @@ chapters:
         caption: "A snowbank holding on along the riverbank"
 
 
-  - id: day7-portage
+  - id: day7-ice-walls
     type: parallax-video
     src: "/videos/stories/brooks-range/IMG_2306.mp4"
     caption: "Walls of ice as we near the sea"
@@ -2021,34 +2021,34 @@ chapters:
       - name: "Mount Michelson C-1, AK"
         url: "/maps/alaska/brooks/Mount_Michelson_C-1.pdf"
         scale: "1:63,360"
-        note: ""
+        note: "The Hulahula valley below the crossing. (not needed for our course, but handy if things changed)"
       - name: "Mount Michelson D-1, AK"
         url: "/maps/alaska/brooks/Mount_Michelson_D-1.pdf"
         scale: "1:63,360"
-        note: ""
+        note: "The Hulahula as it empties onto the coastal plain (not needed for our course, but handy if things changed)"
       - name: "Demarcation Point B-5, AK"
         url: "/maps/alaska/brooks/Demarcation_Point_B-5.pdf"
         scale: "1:63,360"
         year: 1956
-        note: ""
+        note: "Mostly the Jago, but the Okpilak crosses the top corner right on the edge of the mountains."
       - name: "Demarcation Point C-5, AK"
         url: "/maps/alaska/brooks/Demarcation_Point_C-5.pdf"
         scale: "1:63,360"
         year: 1955
-        note: ""
+        note: "The Okpilak and Jago river as they exit the mountains onto the plain."
       - name: "Demarcation Point D-5, AK"
         url: "/maps/alaska/brooks/Demarcation_Point_D-5.pdf"
         scale: "1:63,360"
         year: 1955
-        note: ""
+        note: "Tracking the Okpilak across the coastal plain towards the sea."
       - name: "Barter Island A-5, AK"
         url: "/maps/alaska/brooks/Barter_Island_A-5.pdf"
         scale: "1:63,360"
-        note: ""
+        note: "The traverse from the exit, across the Lagoon, Barter Island, and the town of Kaktoivik"
       - name: "Flaxman Island A-1, AK"
         url: "/maps/alaska/brooks/Flaxman_Island_A-1.pdf"
         scale: "1:63,360"
-        note: ""
+        note: "This covers just the point at which the Okpilak and Hula exit into the Beaufort"
     packing:
       - group: "Boating"
         items:
@@ -2064,7 +2064,7 @@ chapters:
           - "Bear spray"
           - "Portable electric bear fence"
           - "Bear Banger + air horn"
-          - "Garmin inReach (SOS + tracking)"
+          - "Garmin inReach (SOS + tracking + messaging)"
           - "First-aid kit"
           - "Microspikes (glacier travel)"
       - group: "Repair"

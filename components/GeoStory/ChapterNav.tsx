@@ -35,7 +35,15 @@ function chapterSubLabel(c: Chapter): string | undefined {
   return undefined
 }
 
-export default function ChapterNav({ chapters, activeIdx }: { chapters: Chapter[]; activeIdx: number }) {
+export default function ChapterNav({
+  chapters,
+  activeIdx,
+  slugs,
+}: {
+  chapters: Chapter[]
+  activeIdx: number
+  slugs: Record<string, string>
+}) {
   const [open, setOpen] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
   const active = chapters[activeIdx]
@@ -56,8 +64,11 @@ export default function ChapterNav({ chapters, activeIdx }: { chapters: Chapter[
     }
   }, [open])
 
-  const jumpTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const jumpTo = (chapterId: string) => {
+    const slug = slugs[chapterId]
+    if (!slug) return
+    document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    history.replaceState(null, '', `#${slug}`)
     setOpen(false)
   }
 

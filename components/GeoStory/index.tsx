@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useCallback, useState } from 'react'
+import { useRef, useEffect, useCallback, useState, useMemo } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import type {
@@ -21,6 +21,7 @@ import Lightbox from './Lightbox'
 import Reveal from './Reveal'
 import ReadingProgress from './ReadingProgress'
 import ChapterNav from './ChapterNav'
+import { buildChapterSlugs } from './slug'
 
 type MapDriving = MapChapter | ArticleChapterType | OverviewChapterType
 
@@ -41,6 +42,26 @@ export default function GeoStory({ story }: { story: Story }) {
   const [mapLoaded, setMapLoaded] = useState(false)
   const [activeIdx, setActiveIdx] = useState(0)
   const [pinLightbox, setPinLightbox] = useState<ImagePin | null>(null)
+
+  // Readable slugs for deep-linking, e.g. #the-battle instead of the
+  // internal chapter id.
+  const chapterSlugs = useMemo(() => buildChapterSlugs(story.chapters), [story.chapters])
+
+  // The story mounts client-side only (dynamic import, ssr: false), so the
+  // browser's native "scroll to #hash on load" already ran and failed
+  // before these chapter ids existed — do it ourselves once mounted.
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    const el = document.getElementById(hash)
+    if (!el) return
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: 'auto', block: 'start' })
+      })
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Tween the drawn route forward instead of snapping — the path animates
   // ahead as the camera flies to each day.
@@ -281,7 +302,7 @@ export default function GeoStory({ story }: { story: Story }) {
         {story.chapters.map((chapter, i) => (
           <div
             key={chapter.id}
-            id={chapter.id}
+            id={chapterSlugs[chapter.id]}
             className="scroll-mt-14 pointer-events-none"
             ref={(el) => { chapterRefs.current[i] = el }}
           >
@@ -415,7 +436,7 @@ export default function GeoStory({ story }: { story: Story }) {
         />
       )}
 
-      <ChapterNav chapters={story.chapters} activeIdx={activeIdx} />
+      <ChapterNav chapters={story.chapters} activeIdx={activeIdx} slugs={chapterSlugs} />
     </div>
   )
 }
