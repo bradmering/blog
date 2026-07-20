@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Nav from '@/components/Nav'
+import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, pageMetadata } from '@/lib/seo'
 import './globals.css'
 
 const geistSans = Geist({
@@ -13,9 +14,11 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const SITE_DESCRIPTION = 'Adventures, reflections, and projects.'
+
 export const metadata: Metadata = {
-  title: 'Bradley Mering',
-  description: 'Adventures, reflections, and projects.',
+  metadataBase: new URL(SITE_URL),
+  ...pageMetadata({ title: SITE_NAME, description: SITE_DESCRIPTION, path: '/', image: DEFAULT_OG_IMAGE }),
 }
 
 export default function RootLayout({

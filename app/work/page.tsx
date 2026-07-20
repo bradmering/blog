@@ -1,9 +1,12 @@
 import Link from 'next/link'
 import { getAllWork } from '@/lib/work'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Work — Bradley Mering',
-}
+  description: 'Selected projects and case studies.',
+  path: '/work',
+})
 
 export default function WorkIndexPage() {
   const projects = getAllWork()

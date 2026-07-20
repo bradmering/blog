@@ -1,10 +1,13 @@
 import WorkCard from "@/components/WorkCard";
 import type { WorkItem } from "@/components/WorkCard";
 import { getAllWork } from "@/lib/work";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About — Bradley Mering",
-};
+  description: "Dad, climber, trail runner, failed philosopher, and developer.",
+  path: "/about",
+});
 
 const work: WorkItem[] = [
   {

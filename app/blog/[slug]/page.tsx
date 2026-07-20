@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPost, formatDate } from '@/lib/posts'
+import { pageMetadata } from '@/lib/seo'
 import TagBadge from '@/components/TagBadge'
 import CoordinatesDisplay from '@/components/CoordinatesDisplay'
 import ItineraryMapLoader from '@/components/ItineraryMap/Loader'
@@ -19,10 +20,14 @@ export async function generateMetadata({
   const { slug } = await params
   const post = await getPost(slug)
   if (!post) return {}
-  return {
+  return pageMetadata({
     title: `${post.title} — Bradley Mering`,
     description: post.excerpt,
-  }
+    path: `/blog/${slug}`,
+    image: post.image,
+    type: 'article',
+    publishedTime: post.date,
+  })
 }
 
 export default async function PostPage({

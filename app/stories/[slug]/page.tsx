@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import GeoStoryLoader from '@/components/GeoStory/Loader'
 import TopoStoryLoader from '@/components/TopoStory/Loader'
 import { getStory, getTopoData, getAllStorySlugs } from '@/lib/stories'
+import { pageMetadata } from '@/lib/seo'
 import type { TopoStory } from '@/components/TopoStory/types'
 
 export async function generateStaticParams() {
@@ -16,10 +17,16 @@ export async function generateMetadata({
   const { slug } = await params
   const story = await getStory(slug)
   if (!story) return {}
-  return {
+  const titleChapter = story.chapters.find((c) => c.type === 'title') as { image?: string } | undefined
+  // The Brooks Range story also lives at the site root; point crawlers there
+  // as the canonical URL instead of splitting authority between two paths.
+  const path = slug === 'brooks-range' ? '/' : `/stories/${slug}`
+  return pageMetadata({
     title: `${story.title} — Bradley Mering`,
     description: story.subtitle,
-  }
+    path,
+    image: titleChapter?.image,
+  })
 }
 
 export default async function StoryPage({

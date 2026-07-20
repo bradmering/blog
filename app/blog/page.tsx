@@ -1,13 +1,16 @@
 import { getAllPosts } from '@/lib/posts'
 import { getAllStories } from '@/lib/stories'
 import type { Tag } from '@/lib/posts'
+import { pageMetadata } from '@/lib/seo'
 import FeedRow from '@/components/FeedRow'
 
 const ALL_TAGS: Tag[] = ['adventures', 'reflections', 'projects']
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Journal — Bradley Mering',
-}
+  description: 'Trip reports, stories, and reflections from the field.',
+  path: '/blog',
+})
 
 export default async function BlogPage({
   searchParams,

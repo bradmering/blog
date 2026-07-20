@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllWork, getWork } from '@/lib/work'
+import { pageMetadata } from '@/lib/seo'
 
 export async function generateStaticParams() {
   const projects = getAllWork()
@@ -15,10 +16,13 @@ export async function generateMetadata({
   const { slug } = await params
   const project = await getWork(slug)
   if (!project) return {}
-  return {
+  return pageMetadata({
     title: `${project.title} — Bradley Mering`,
     description: project.excerpt,
-  }
+    path: `/work/${slug}`,
+    image: project.image,
+    type: 'article',
+  })
 }
 
 export default async function WorkPage({
