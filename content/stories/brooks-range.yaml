@@ -1991,7 +1991,15 @@ chapters:
     subheading: "Plan your own"
     heading: "Logistics"
     text: |
-      Nine days, fully self-supported, from Grassers Airstrip on the upper Hulahula to Barter Island. Bush flights in and out of Kaktovik book up early in the short arctic summer window. Everything below is what we carried and used.
+      Nine days, fully self-supported, from Grassers Airstrip on the upper Hulahula to Barter Island.
+      
+      Bush flights in and out of Kaktovik book up early in the short arctic summer window. The flight from Fairbanks to Grassers had a hard upper limit of 770lbs people and gear.  We were well under (and still too heavy!), but worth considering if you plan to raft the Hula. Total cost of this flight was a bit over $5k
+
+      The Wright seat flights are much cheaper, a couple hundred per person, and don't have as much of a weight restriction, so taking this home cut the cost of the trip a good bit over a second bush flight. As mentioned, they run on their own schedule, so show up early and be prepared to wait.
+
+      Everything below is what we carried and used. We carried primarily boil in the bag to simplify cleaning and gear.  
+    
+    
     links:
       - label: "Interactive route map (CalTopo)"
         url: "https://caltopo.com/m/Q7A1TCV"
@@ -2005,6 +2013,9 @@ chapters:
       - label: "Yukon Air Service"
         url: "http://www.yukonair.com/"
         note: "Fairbanks bush flights to Grassers Airstrip"
+      - label: "Wright Air Service"
+        url: "https://wrightairservice.com/destinations/"
+        note: "Daily Weekday Seat Flights"
     quads:
       - name: "Mount Michelson A-1, AK"
         url: "/maps/alaska/brooks/Mount_Michelson_A-1.pdf"
@@ -2059,6 +2070,7 @@ chapters:
           - "Throw line"
           - "Inflation bag"
           - Cargo Fly
+          - Knife
       - group: "Safety"
         items:
           - "Bear spray"
