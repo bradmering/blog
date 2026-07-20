@@ -43,12 +43,17 @@ export async function getStory(slug: string): Promise<Story | TopoStory | null> 
       if (chapter.type === 'map' && chapter.text) {
         chapter.textHtml = await renderMarkdown(chapter.text)
       }
-      if (chapter.type === 'article') {
-        for (const block of chapter.blocks) {
-          if (block.text) {
-            block.textHtml = await renderMarkdown(block.text)
-          }
-        }
+      if (chapter.type === 'article' && chapter.text) {
+        chapter.textHtml = await renderMarkdown(chapter.text)
+      }
+      if (chapter.type === 'overview' && chapter.text) {
+        chapter.textHtml = await renderMarkdown(chapter.text)
+      }
+      if (chapter.type === 'parallax-video' && chapter.text) {
+        chapter.textHtml = await renderMarkdown(chapter.text)
+      }
+      if (chapter.type === 'logistics' && chapter.text) {
+        chapter.textHtml = await renderMarkdown(chapter.text)
       }
     }
 

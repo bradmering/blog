@@ -27,7 +27,7 @@ export default function VideoChapter({ chapter }: { chapter: VideoChapterType })
   }, [])
 
   return (
-    <div className="relative h-screen z-10">
+    <div className="relative h-screen z-10 pointer-events-auto">
       <video
         ref={videoRef}
         src={chapter.src}

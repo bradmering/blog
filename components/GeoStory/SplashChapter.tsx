@@ -25,7 +25,7 @@ export default function SplashChapter({ chapter }: { chapter: SplashChapterType 
   }, [])
 
   return (
-    <div ref={containerRef} style={{ height: '200vh' }}>
+    <div ref={containerRef} style={{ height: '200vh' }} className="pointer-events-auto">
       <div
         className="sticky overflow-hidden"
         style={{ top: NAV_H, height: `calc(100vh - ${NAV_H}px)`, zIndex: 15 }}

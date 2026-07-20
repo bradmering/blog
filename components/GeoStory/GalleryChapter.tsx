@@ -111,7 +111,7 @@ export default function GalleryChapter({ chapter }: { chapter: GalleryChapterTyp
   if (!images?.length) return null
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 pointer-events-auto">
       {layout === 'duo'   && <Duo    images={images} onOpen={setLightboxIdx} />}
       {layout === 'trio'  && <Trio   images={images} onOpen={setLightboxIdx} />}
       {layout === 'quad'  && <Quad   images={images} onOpen={setLightboxIdx} />}

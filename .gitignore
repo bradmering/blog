@@ -47,3 +47,8 @@ next-env.d.ts
 public/images/**/*.png
 public/images/**/*.jpg
 !public/images/about-cover.jpg
+
+# Raw Strava pulls (working data for composing story YAML, not for commit)
+content/stories/raw/
+
+certificates
