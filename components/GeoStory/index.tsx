@@ -21,6 +21,7 @@ import Lightbox from './Lightbox'
 import Reveal from './Reveal'
 import ReadingProgress from './ReadingProgress'
 import ChapterNav from './ChapterNav'
+import FullscreenMap from './FullscreenMap'
 import { buildChapterSlugs } from './slug'
 
 type MapDriving = MapChapter | ArticleChapterType | OverviewChapterType
@@ -32,6 +33,19 @@ function isMapDriving(chapter: Story['chapters'][number]): chapter is MapDriving
 const easeInOutCubic = (t: number) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 
+/** Phone-width viewports get a flatter, wider, bottom-weighted camera. */
+function useIsNarrow() {
+  const [narrow, setNarrow] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)')
+    const update = () => setNarrow(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return narrow
+}
+
 export default function GeoStory({ story }: { story: Story }) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapRef = useRef<mapboxgl.Map | null>(null)
@@ -42,6 +56,8 @@ export default function GeoStory({ story }: { story: Story }) {
   const [mapLoaded, setMapLoaded] = useState(false)
   const [activeIdx, setActiveIdx] = useState(0)
   const [pinLightbox, setPinLightbox] = useState<ImagePin | null>(null)
+  const [showFullMap, setShowFullMap] = useState(false)
+  const narrow = useIsNarrow()
 
   // Readable slugs for deep-linking, e.g. #the-battle instead of the
   // internal chapter id.
@@ -142,12 +158,15 @@ export default function GeoStory({ story }: { story: Story }) {
       // element to avoid clobbering the marker's placement.
       if (story.imagePins) {
         for (const pin of story.imagePins) {
+          // 44px hit area around a 34px thumbnail — the visual size stays put
+          // but the pin is actually tappable with a thumb.
           const el = document.createElement('div')
-          el.style.cssText = 'width:34px;height:34px;cursor:pointer;'
+          el.style.cssText =
+            'width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;'
 
           const inner = document.createElement('div')
           inner.style.cssText = `
-            width:100%; height:100%; border-radius:50%;
+            width:34px; height:34px; border-radius:50%;
             background-image: url('${pin.thumbnail}');
             background-size: cover; background-position: center;
             border: 2px solid white; box-shadow: 0 1px 5px rgba(0,0,0,0.55);
@@ -189,13 +208,17 @@ export default function GeoStory({ story }: { story: Story }) {
       const map = mapRef.current
       if (!map || !isMapDriving(chapter)) return
 
-      // Whole-route overview — fit the entire traverse in view
+      // Whole-route overview — fit the entire traverse in view. On a phone the
+      // text sits in a bottom sheet, so reserve that space in the padding
+      // rather than letting the route hide behind it.
       if (chapter.type === 'overview') {
         if (story.route && story.route.length >= 2) {
           const bounds = new mapboxgl.LngLatBounds(story.route[0], story.route[0])
           for (const c of story.route) bounds.extend(c)
           map.fitBounds(bounds, {
-            padding: { top: 90, bottom: 90, left: 60, right: 60 },
+            padding: narrow
+              ? { top: 70, bottom: Math.round(window.innerHeight * 0.5), left: 24, right: 24 }
+              : { top: 90, bottom: 90, left: 60, right: 60 },
             pitch: 0,
             bearing: 0,
             duration: 3000,
@@ -208,9 +231,13 @@ export default function GeoStory({ story }: { story: Story }) {
 
       map.flyTo({
         center: chapter.coordinates,
-        zoom: chapter.zoom,
-        pitch: chapter.pitch ?? 0,
+        // A phone screen shows far less ground at the same zoom, and a steep
+        // pitch turns the route into an unreadable sliver — back off both.
+        zoom: narrow ? chapter.zoom - 0.7 : chapter.zoom,
+        pitch: narrow ? Math.min(chapter.pitch ?? 0, 35) : chapter.pitch ?? 0,
         bearing: chapter.bearing ?? 0,
+        // Lift the subject above the bottom sheet on narrow screens.
+        offset: narrow ? [0, -Math.round(window.innerHeight * 0.14)] : [0, 0],
         duration: 3000,
         curve: 1.4,
         easing: easeInOutCubic,
@@ -231,7 +258,7 @@ export default function GeoStory({ story }: { story: Story }) {
           .addTo(map)
       }
     },
-    [story, animateRoute]
+    [story, animateRoute, narrow]
   )
 
   useEffect(() => {
@@ -319,13 +346,13 @@ export default function GeoStory({ story }: { story: Story }) {
             {/* ── Map ───────────────────────────────────────────────── */}
             {chapter.type === 'map' && (
               <div
-                className={`min-h-[85vh] flex items-center py-20 pointer-events-none ${
+                className={`min-h-[calc(85vh-3.5rem)] sm:min-h-[85vh] flex items-end sm:items-center px-3 pb-20 sm:px-0 sm:pb-0 sm:py-20 pointer-events-none ${
                   chapter.align === 'right'
-                    ? 'justify-end pr-8 sm:pr-14'
-                    : 'justify-start pl-8 sm:pl-14'
+                    ? 'sm:justify-end sm:pr-14'
+                    : 'sm:justify-start sm:pl-14'
                 }`}
               >
-                <div className="pointer-events-auto bg-white/75 backdrop-blur-sm shadow-lg max-w-xl w-full p-6">
+                <div className="pointer-events-auto bg-white/90 sm:bg-white/75 backdrop-blur-md shadow-xl rounded-xl sm:rounded-none max-w-xl w-full p-5 sm:p-6 max-h-[46vh] sm:max-h-none overflow-y-auto">
                   {chapter.subheading && (
                     <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">
                       {chapter.subheading}
@@ -376,15 +403,15 @@ export default function GeoStory({ story }: { story: Story }) {
                     this chapter's coordinates/route) between day narratives.
                     Tall enough to dwell on the map and click its photo pins. */}
                 {'coordinates' in chapter && (
-                  <div style={{ height: '110vh', width: '100%', pointerEvents: 'none' }} aria-hidden="true" />
+                  <div className="h-[80vh] sm:h-[110vh] w-full pointer-events-none" aria-hidden="true" />
                 )}
               </>
             )}
 
             {/* ── Overview (whole-route view) ───────────────────────── */}
             {chapter.type === 'overview' && (
-              <div className="min-h-screen flex items-center justify-start py-24 pl-8 sm:pl-14 pointer-events-none">
-                <Reveal className="pointer-events-auto bg-white/60 backdrop-blur-xl shadow-2xl shadow-black/10 ring-1 ring-white/40 max-w-sm w-full mr-6 p-8 text-left rounded-2xl">
+              <div className="min-h-[calc(100vh-3.5rem)] sm:min-h-screen flex items-end sm:items-center justify-center sm:justify-start px-3 pb-20 sm:px-0 sm:pb-0 sm:py-24 sm:pl-14 pointer-events-none">
+                <Reveal className="pointer-events-auto bg-white/85 sm:bg-white/60 backdrop-blur-xl shadow-2xl shadow-black/10 ring-1 ring-white/40 max-w-sm w-full sm:mr-6 p-6 sm:p-8 text-left rounded-2xl max-h-[52vh] sm:max-h-none overflow-y-auto">
                   {chapter.subheading && (
                     <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">
                       {chapter.subheading}
@@ -402,6 +429,22 @@ export default function GeoStory({ story }: { story: Story }) {
                     />
                   ) : (
                     chapter.text && <p className="text-sm text-stone-600 leading-relaxed">{chapter.text}</p>
+                  )}
+
+                  {story.route && story.route.length >= 2 && (
+                    <button
+                      onClick={() => setShowFullMap(true)}
+                      className="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-stone-700 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                        />
+                      </svg>
+                      Explore the full map
+                    </button>
                   )}
                 </Reveal>
               </div>
@@ -437,6 +480,8 @@ export default function GeoStory({ story }: { story: Story }) {
       )}
 
       <ChapterNav chapters={story.chapters} activeIdx={activeIdx} slugs={chapterSlugs} />
+
+      {showFullMap && <FullscreenMap story={story} onClose={() => setShowFullMap(false)} />}
     </div>
   )
 }
