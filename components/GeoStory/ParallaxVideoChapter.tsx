@@ -123,6 +123,7 @@ export default function ParallaxVideoChapter({ chapter }: { chapter: ParallaxVid
               loop={chapter.loop ?? true}
               muted
               playsInline
+              preload="none"
               className="absolute inset-0 w-full h-full object-cover sm:object-contain"
             />
             {/* Darken for the mobile glass-text pass only */}
@@ -179,6 +180,7 @@ export default function ParallaxVideoChapter({ chapter }: { chapter: ParallaxVid
           loop={chapter.loop ?? true}
           muted
           playsInline
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div
