@@ -1595,6 +1595,7 @@ chapters:
         caption: "Evening light over the valley"
       - type: video
         src: "/videos/stories/brooks-range/IMG_1751.mp4"
+        poster: "/videos/stories/brooks-range/posters/IMG_1751.jpg"
         caption: "Flying in over the Hulahula"
 
   - id: day2
@@ -1639,6 +1640,7 @@ chapters:
         caption: "Descending to the gravel bar camp"
       - type: video
         src: "/videos/stories/brooks-range/IMG_6526.mp4"
+        poster: "/videos/stories/brooks-range/posters/IMG_6526.jpg"
         caption: "Working toward the glacier"
 
   - id: day3
@@ -1697,6 +1699,7 @@ chapters:
   - id: day3-muskoxen
     type: parallax-video
     src: "/videos/stories/brooks-range/IMG_2037.mp4"
+    poster: "/videos/stories/brooks-range/posters/IMG_2037.jpg"
     caption: "The Okpilak valley and the muskox herd"
     align: left
     subheading: "July 4 — Day 3"
@@ -1742,11 +1745,13 @@ chapters:
         caption: "Tundra and talus, blue sky above"
       - type: video
         src: "/videos/stories/brooks-range/IMG_2073.mp4"
+        poster: "/videos/stories/brooks-range/posters/IMG_2073.jpg"
         caption: "A mighty cascade flowing out from the Esetuk glacier to meet the Okpilak"
   
   - id: paddling-upper-waters
     type: parallax-video
     src: "/videos/stories/brooks-range/IMG_6685.mp4"
+    poster: "/videos/stories/brooks-range/posters/IMG_6685.jpg"
     caption: "Paddling the upper Okpilak"
     align: right
     subheading: "July 5 — Day 4"
@@ -1794,6 +1799,7 @@ chapters:
     type: parallax-video
     layout: split
     src: "/videos/stories/brooks-range/IMG_2130.mp4"
+    poster: "/videos/stories/brooks-range/posters/IMG_2130.jpg"
     caption: "Scratching itself on a rock, the Muskox was uninterested in us"
     align: left
     subheading: "July 6 — Day 5"
@@ -1806,6 +1812,7 @@ chapters:
     type: parallax-video
     layout: split
     src: "/videos/stories/brooks-range/IMG_2159.mp4"
+    poster: "/videos/stories/brooks-range/posters/IMG_2159.jpg"
     caption: "A wolverine, checking us out"
     align: right
     subheading: "July 6 — Day 5"
@@ -1874,6 +1881,7 @@ chapters:
         caption: "Camp on the coastal plain, wildflowers in the wind"
       - type: video
         src: "/videos/stories/brooks-range/IMG_6737.mp4"
+        poster: "/videos/stories/brooks-range/posters/IMG_6737.jpg"
         caption: "Whitewater toward the coastal plain"
 
   - id: day7-sea
@@ -1907,6 +1915,7 @@ chapters:
   - id: day7-ice-walls
     type: parallax-video
     src: "/videos/stories/brooks-range/IMG_2306.mp4"
+    poster: "/videos/stories/brooks-range/posters/IMG_2306.jpg"
     caption: "Walls of ice as we near the sea"
     align: left
     subheading: "July 9"
@@ -2018,46 +2027,53 @@ chapters:
         note: "Daily Weekday Seat Flights"
     quads:
       - name: "Mount Michelson A-1, AK"
-        url: "/maps/alaska/brooks/Mount_Michelson_A-1.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20A-1_357816_1983_63360_geo.pdf"
+        year: 1983
         scale: "1:63,360"
         note: "Grassers Airstrip, put-in on the Hulahula, and the first section of the hulahula."
       - name: "Mount Michelson A-2, AK"
-        url: "/maps/alaska/brooks/Mount_Michelson_A-2.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20A-2_357817_1983_63360_geo.pdf"
+        year: 1983
         scale: "1:63,360"
         note: "The hulahula winds west into this quad, and then back to A-1"
       - name: "Mount Michelson B-1, AK"
-        url: "/maps/alaska/brooks/Mount_Michelson_B-1.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20B-1_357822_1955_63360_geo.pdf"
+        year: 1955
         scale: "1:63,360"
         note: "The Esetuk glacier and the Okpilak valley, showing the reentrant opposite of Katuk Creek leading up to the Esetuk glacier, and the Okpilak valley down to the confluence with the Hulahula."
       - name: "Mount Michelson C-1, AK"
-        url: "/maps/alaska/brooks/Mount_Michelson_C-1.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20C-1_357830_1955_63360_geo.pdf"
+        year: 1955
         scale: "1:63,360"
         note: "The Hulahula valley below the crossing. (not needed for our course, but handy if things changed)"
       - name: "Mount Michelson D-1, AK"
-        url: "/maps/alaska/brooks/Mount_Michelson_D-1.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20D-1_357840_1955_63360_geo.pdf"
+        year: 1955
         scale: "1:63,360"
         note: "The Hulahula as it empties onto the coastal plain (not needed for our course, but handy if things changed)"
       - name: "Demarcation Point B-5, AK"
-        url: "/maps/alaska/brooks/Demarcation_Point_B-5.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Demarcation%20Point%20B-5_355380_1956_63360_geo.pdf"
         scale: "1:63,360"
         year: 1956
         note: "Mostly the Jago, but the Okpilak crosses the top corner right on the edge of the mountains."
       - name: "Demarcation Point C-5, AK"
-        url: "/maps/alaska/brooks/Demarcation_Point_C-5.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Demarcation%20Point%20C-5_355387_1955_63360_geo.pdf"
         scale: "1:63,360"
         year: 1955
         note: "The Okpilak and Jago river as they exit the mountains onto the plain."
       - name: "Demarcation Point D-5, AK"
-        url: "/maps/alaska/brooks/Demarcation_Point_D-5.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Demarcation%20Point%20D-5_355393_1955_63360_geo.pdf"
         scale: "1:63,360"
         year: 1955
         note: "Tracking the Okpilak across the coastal plain towards the sea."
       - name: "Barter Island A-5, AK"
-        url: "/maps/alaska/brooks/Barter_Island_A-5.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Barter%20Island%20A-5_354217_1955_63360_geo.pdf"
+        year: 1955
         scale: "1:63,360"
         note: "The traverse from the exit, across the Lagoon, Barter Island, and the town of Kaktoivik"
       - name: "Flaxman Island A-1, AK"
-        url: "/maps/alaska/brooks/Flaxman_Island_A-1.pdf"
+        url: "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/50000/AK_Flaxman%20Island%20A-1_463717_1962_50000_geo.pdf"
+        year: 1962
         scale: "1:63,360"
         note: "This covers just the point at which the Okpilak and Hula exit into the Beaufort"
     packing:

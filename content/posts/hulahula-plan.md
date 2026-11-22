@@ -214,18 +214,18 @@ We're using 1:63,360-scale USGS quads — the standard for Alaska backcountry. T
 
 | Quad | Download |
 |------|----------|
-| A-1 | [Mount_Michelson_A-1.pdf](/topos/Mount_Michelson_A-1.pdf) |
-| A-2 | [Mount_Michelson_A-2.pdf](/topos/Mount_Michelson_A-2.pdf) |
-| B-1 | [Mount_Michelson_B-1.pdf](/topos/Mount_Michelson_B-1.pdf) |
-| C-1 | [Mount_Michelson_C-1.pdf](/topos/Mount_Michelson_C-1.pdf) |
-| D-1 | [Mount_Michelson_D-1.pdf](/topos/Mount_Michelson_D-1.pdf) |
+| A-1 | [Mount_Michelson_A-1.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20A-1_357816_1983_63360_geo.pdf) |
+| A-2 | [Mount_Michelson_A-2.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20A-2_357817_1983_63360_geo.pdf) |
+| B-1 | [Mount_Michelson_B-1.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20B-1_357822_1955_63360_geo.pdf) |
+| C-1 | [Mount_Michelson_C-1.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20C-1_357830_1955_63360_geo.pdf) |
+| D-1 | [Mount_Michelson_D-1.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Mount%20Michelson%20D-1_357840_1955_63360_geo.pdf) |
 
 ### Flaxman Island & Barter Island (coast, Kaktovik)
 
 | Quad | Download |
 |------|----------|
-| Flaxman Island A-1 | [Flaxman_Island_A-1.pdf](/topos/Flaxman_Island_A-1.pdf) |
-| Barter Island A-5 | [Barter_Island_A-5.pdf](/topos/Barter_Island_A-5.pdf) |
+| Flaxman Island A-1 | [Flaxman_Island_A-1.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/50000/AK_Flaxman%20Island%20A-1_463717_1962_50000_geo.pdf) |
+| Barter Island A-5 | [Barter_Island_A-5.pdf](https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/AK/63360/AK_Barter%20Island%20A-5_354217_1955_63360_geo.pdf) |
 
 ## Packing List
 

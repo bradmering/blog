@@ -35,6 +35,7 @@ export default function VideoChapter({ chapter }: { chapter: VideoChapterType })
         loop={chapter.loop ?? true}
         muted
         playsInline
+        preload="none"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/50 pointer-events-none" />

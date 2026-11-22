@@ -32,6 +32,7 @@ function FullWidthVideo({ media }: { media: ArticleMedia }) {
         loop={media.loop ?? true}
         muted
         playsInline
+        preload="none"
         controls
         className="w-full h-auto max-h-[90vh] object-contain mx-auto"
       />
